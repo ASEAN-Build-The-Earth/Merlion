@@ -1,5 +1,4 @@
 
-
 //index.js - Main file of ASEAN  discord bot
 //Made by CookieGMVN, StoneMc
 //version 0.2
@@ -187,19 +186,9 @@ client.on('message', message => {
 	});
 
 client.on('message', message => {
+
         if (message.content === 'xbox') {
                 message.channel.send('Is Sus');
-        }
-        });
-
-
-
-
-
-
-client.on('message', message => {
-        if (message.content === 'How to join') {
-                message.channel.send('Please read <#789012857798000690>');
         }
         });
 
