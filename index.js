@@ -98,7 +98,7 @@ client.on('message', message => {
 	if(message.content === 'm!hello'){
 		message.reply('Hello there');
 	}
-	if(message.content === 'm!status'){
+	if(message.content === 'm!ServerStatus'){
 			status((error, result) => {
 				if (error) {
 					message.channel.send("error!");
@@ -192,6 +192,12 @@ client.on('message', message => {
         }
         });
 
+
+client.on('message', message => {
+        if (message.content === 'Phats') {
+                message.channel.send('https://media.discordapp.net/attachments/832603438285062164/869838594859237418/render_2021-07-21_15.32.09.gif');
+        }
+        });
 
 
 
