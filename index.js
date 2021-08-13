@@ -1,5 +1,3 @@
-
-
 //index.js - Main file of ASEAN  discord bot
 //Made by CookieGMVN, StoneMc
 //version 0.2
@@ -19,6 +17,7 @@ for (const file of commandFiles) {
 client.once('ready', () => {
 	console.log('Ready!');
 });
+
 client.on('message', message => {
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
 
@@ -62,56 +61,7 @@ client.on('message', async (msg) => {
     }
   }
 });
-//Status
-// function status(callback, ip) {
-// 	var ourRequest = new XMLHttpRequest();
-//     ourRequest.open('GET', 'https://mcapi.us/server/status?ip='+ip2, true);
-//       ourRequest.onload = () => {
-// 		var ourData = JSON.parse(ourRequest.responseText);
-// 		callback(null, checkStatus(ourData));
-//     };
-// 	ourRequest.onerror = function() {
-//   		console.error(ourRequest.statusText);
-// 	};
-//     ourRequest.send();
-// }
-
-// function checkStatus(data){
-// 	if(data.online){
-// 		if (data.players.max === 0){
-// 			return "The server is offline.";
-// 		}
-// 		else {
-// 			return "The MC server is online, players currently online: " + data.players.now + " /" + data.players.max + " IP - asean.my.to";
-// 		}
-
-// 	} else {
-// 		return "server offline";
-// 	}
-// }
-
-
-// client.on('ready', () => {
-// 	console.log('The bot in online');
-// });
-
-// client.on('message', message => {
-// 	var args = message.content.split(/[ ]+/);
-// 	if(message.content === 'm!hello'){
-// 		message.reply('Hello there');
-// 	}
-// 	if(message.content === 'm!ServerStatus'){
-// 			status((error, result) => {
-// 				if (error) {
-// 					message.channel.send("error!");
-// 					return;
-// 				}
-// 			message.channel.send(result);
-// 		}, ip2);
-// 	}
-// });
-
-//simple hi auto resonder
+//All the autoresponders
 
 client.on('message', message => {
 if (message.content === 'Hi') {
@@ -138,7 +88,11 @@ client.on('message', message => {
                 message.channel.send('Please read <#789012857798000690>');
         }
         });
-
+client.on('message', message => {
+  if (message.content === 'How do i join') {
+          message.channel.send('Please read <#789012857798000690>');
+  }
+  });
 			
 
 
