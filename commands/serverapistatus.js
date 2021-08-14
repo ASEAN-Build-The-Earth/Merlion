@@ -11,6 +11,7 @@ module.exports = {
         axios.get('https://mcapi.us/server/status?ip=asean.my.to')
         .then(response => {
           message.channel.send(JSON.stringify(response.data, 0, 4));
+          console.log(response.data);
         });  
     },
 };

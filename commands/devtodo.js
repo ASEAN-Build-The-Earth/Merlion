@@ -1,6 +1,7 @@
+const Discord = require('discord.js');
 module.exports = {
 	name: 'devtodo',
-	description: 'There is no world download',
+	description: 'There is no w	orld download',
 	aliases: ['dtd','DevToDo'],
 	execute(message, args) {
 		const devtodo = new Discord.MessageEmbed()
