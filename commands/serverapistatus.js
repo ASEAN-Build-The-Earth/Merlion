@@ -1,8 +1,8 @@
 const axios = require('axios');
-axios.get('https://mcapi.us/server/status?ip=asean.my.to')
-.then(response => {
-  console.log(response.data);
-});
+// axios.get('https://mcapi.us/server/status?ip=asean.my.to')
+// .then(response => {
+//   console.log(response.data);
+// });
 
 module.exports = {
     name: 'serverstatus',
