@@ -5,7 +5,7 @@ const axios = require('axios');
 // });
 
 module.exports = {
-    name: 'serverstatus',
+    name: 'ssrv',
     description: 'USes an API to grab server status ',
     execute(message, args) {
         axios.get('https://mcapi.us/server/status?ip=asean.my.to')
