@@ -16,7 +16,6 @@ module.exports = {
           .setAuthor(`${message.author.username}`, `${message.author.displayAvatarURL({ dynamic: true })}`)
           .setTitle ('Here Have a dog image')
           .setImage (response.data.message)
-          .setFooter( 'Rerember this is manualy updated.');
           message.channel.send(dog);
         });  
           
