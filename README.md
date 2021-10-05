@@ -3,16 +3,8 @@
 
 Authors: CookieGMVN, StoneMc
 
-Requirments
-NPM 
-Node.js
 
-How to install?
-- Open the folder with VS code
-- Open the terminal
-- run npm ci
-- then run node .
-- 
+
 
 
 
