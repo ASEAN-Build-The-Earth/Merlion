@@ -3,7 +3,8 @@
 
 Authors: CookieGMVN, StoneMc
 
-
+This discord bot was originally made for ASEAzn build the earth. 
+Bot had many basic features such as. Getting covid data and getting info if a mc server is online or not
 
 
 
