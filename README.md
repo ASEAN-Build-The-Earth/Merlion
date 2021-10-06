@@ -25,6 +25,10 @@ See
 Some requirements
 - node.js
 - npm
+To install and what not
+- cd to the folder
+- run npm co
+- run node .
 ---
 
 # Special Events
