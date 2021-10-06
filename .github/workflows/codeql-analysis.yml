@@ -10,7 +10,7 @@ on:
       - main
       - 'rc/*'
     paths:
-      - 'csharp/**'
+      #- 'csharp/**'
       - '.github/codeql/**'
       - '.github/workflows/codeql-analysis.yml'
   schedule:
