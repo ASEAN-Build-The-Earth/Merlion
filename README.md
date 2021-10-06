@@ -11,7 +11,8 @@ Asean BTE Merlion Discord bot
 ## GUIDE   
 
 For your own use you will need to create a config.json like this and test the bot with your own token.<br/> 
-See [Discord Developer Guide](https://discord.com/developers/docs/intro) to Start your bot
+See 
+
 ```json
 {
 	"token": "BOTTOKEN",
@@ -21,7 +22,13 @@ See [Discord Developer Guide](https://discord.com/developers/docs/intro) to Star
 	"author": "StoneMc and cookie"
 }
 ```
-
+Some requirements
+- node.js
+- npm
+To install and what not
+- cd to the folder
+- run npm co
+- run node .
 ---
 
 # Special Events
