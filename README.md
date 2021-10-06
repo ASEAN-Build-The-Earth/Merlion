@@ -20,3 +20,4 @@ BY the way you will need to create a config.json and here it is
 	"author": "StoneMc and cookie"
 }
 ```
+<h2> Install Steps</hs>
