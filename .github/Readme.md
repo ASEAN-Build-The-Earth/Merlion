@@ -1,10 +1,23 @@
-# Workflow Analysing
+# ASEAN BTE
 
-> <img src="https://github.gallerycdn.vsassets.io/extensions/github/vscode-codeql/1.5.5/1631141921696/Microsoft.VisualStudio.Services.Icons.Default" width ="100" height = "100"/>
-> 
-> ### uses analysis support for CodeQL
-> - For improve of performance please see github official repository : [CodeQl Go](https://github.com/github/codeql-go)
 
-<br/>
+Authors: CookieGMVN, StoneMc
 
-*updated 06/10/2021 | 10:54AM*
+This discord bot was originally made for ASEAzn build the earth. 
+Bot had many basic features such as. Getting covid data and getting info if a mc server is online or not
+
+
+
+
+BY the way you will need to create a config.json and here it is
+```
+
+{
+	"token": "BOTTOKEN",
+	"prefix": "m!",
+	"version": "0.3.2",
+	"status": "Beta",
+	"author": "StoneMc and cookie"
+}
+```
+<h2> Install Steps</hs>
