@@ -1,4 +1,5 @@
 # ASEAN BTE MERLION DISCORD BOT
+[![Known Vulnerabilities](https://snyk.io/test/github/ASEAN-Build-The-Earth/Merlion/badge.svg)]
 Asean BTE Merlion Discord bot 
 
 > Authors: CookieGMVN, StoneMc
