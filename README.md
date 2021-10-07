@@ -11,9 +11,7 @@ Asean BTE Merlion Discord bot
 ---
 
 ## GUIDE   
-
 For your own use you will need to create a config.json like this and test the bot with your own token.<br/> 
-See 
 
 ```json
 {
@@ -37,7 +35,7 @@ What can this bot do?
 - ![image](https://user-images.githubusercontent.com/67421882/136300933-de9b14ad-e8d1-437e-a083-bedd485bcc1d.png)
 -  ![image](https://user-images.githubusercontent.com/67421882/136300975-cc669278-1fd5-4cbd-ac00-8ab7133d450e.png)
 
-
+---
 # Special Events
 
 ![image](https://camo.githubusercontent.com/5a8d352f17e028b08d7afe24eeb3293740bf399826ee1e3726dbae93d685c2b7/68747470733a2f2f6861636b746f626572666573742e6469676974616c6f6365616e2e636f6d2f5f6e7578742f696d672f6c6f676f2d6861636b746f626572666573742d66756c6c2e663432653362312e737667)
