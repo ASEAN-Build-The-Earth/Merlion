@@ -1,5 +1,5 @@
 //index.js - Main file of ASEAN  discord bot
-//Made by CookieGMVN, StoneMc
+//Made by CookieGMVN, StoneMc, dirtytin
 //version 0.2
 const fs = require('fs');
 const Discord = require('discord.js');
