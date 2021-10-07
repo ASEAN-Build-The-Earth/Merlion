@@ -10,25 +10,17 @@ Asean BTE Merlion Discord bot
 
 ## GUIDE   
 
-For your own use you will need to create a config.json like this and test the bot with your own token.<br/> 
-See [Discord Developer Guide](https://discord.com/developers/docs/intro) to Start your bot
+How to config?
 
-```json
-{
-	"token": "BOTTOKEN",
-	"prefix": "m!",
-	"version": "0.3.2",
-	"status": "Beta",
-	"author": "StoneMc and cookie"
-}
-```
+Go to Discord Devs Portal, create a Bot, then copy your Bot token and paste to data/auth.json. If you want to change the prefix, go to data/config.json.
+
 Some requirements
-- node.js
-- npm
-To install and what not
+- node.js v16.8.0 or above
+- npm v7.21.0 or above
+How to install?
+- clone this repository to your pc/laptop
 - cd to the folder
-- run npm co
-- run node .
+- run npm ci, then npm start.
 ---
 
 # Special Events
