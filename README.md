@@ -30,6 +30,11 @@ To install and what not
 - run npm co
 - run node .
 ---
+What can this bot do?
+- ![image](https://user-images.githubusercontent.com/67421882/136300904-5b577233-e9e6-43e0-85b6-155b006cce0e.png)
+- ![image](https://user-images.githubusercontent.com/67421882/136300933-de9b14ad-e8d1-437e-a083-bedd485bcc1d.png)
+-  ![image](https://user-images.githubusercontent.com/67421882/136300975-cc669278-1fd5-4cbd-ac00-8ab7133d450e.png)
+
 
 # Special Events
 
