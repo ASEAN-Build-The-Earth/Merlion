@@ -1,5 +1,5 @@
 # ASEAN BTE MERLION DISCORD BOT
-[![Known Vulnerabilities](https://snyk.io/test/github/ASEAN-Build-The-Earth/Merlion/badge.svg)] [![Current Issues](https://img.shields.io/github/issues/ASEAN-Build-The-Earth/Merlion)] [![License](https://img.shields.io/github/license/ASEAN-Build-The-Earth/Merlion)]
+![Known Vulnerabilities](https://snyk.io/test/github/ASEAN-Build-The-Earth/Merlion/badge.svg) ![Current Issues](https://img.shields.io/github/issues/ASEAN-Build-The-Earth/Merlion) ![License](https://img.shields.io/github/license/ASEAN-Build-The-Earth/Merlion)
 
 Asean BTE Merlion Discord bot 
 
