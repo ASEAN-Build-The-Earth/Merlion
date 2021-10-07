@@ -12,7 +12,7 @@ Asean BTE Merlion Discord bot
 
 ## GUIDE   
 For your own use you will need to create a config.json like this and test the bot with your own token.<br/> 
-
+See [Discord Developer Guide](https://discord.com/developers/docs/intro) to Start your bot
 ```json
 {
 	"token": "BOTTOKEN",
