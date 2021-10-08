@@ -20,7 +20,7 @@
     },
     "homepage": "https://github.com/ASEAN-Build-The-Earth/Merlion#readme",
     "dependencies": {
-        "axios": "^0.21.3",
+        "axios": "^0.21.4",
         "discord.js": "^13.2.0",
         "moment": "^2.29.1"
     }
