@@ -17,6 +17,7 @@ Go to Discord Devs Portal, create a Bot, then copy your Bot token and paste to d
 Some requirements
 - node.js v16.8.0 or above
 - npm v7.21.0 or above
+
 How to install?
 - clone this repository to your pc/laptop
 - cd to the folder
