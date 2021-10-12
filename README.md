@@ -22,6 +22,8 @@ How to install?
 - clone this repository to your pc/laptop
 - cd to the folder
 - run npm ci, then npm start.
+
+Join out discord! [here](https://discord.com/invite/tat2uggfeX)
 ---
 
 # Special Events
