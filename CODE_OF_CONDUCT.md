@@ -18,12 +18,15 @@ community include:
 prefix | description
 ------------ | ---------
 feat: | features added
-edit: | file edited (specify file edited will be good too)
+fix: | bug fixed (link to issue/PR that said the bugs is appreciated)
+edit: | file edited (we do appreciated if file edited is specified)
 critical: | feature edited is  critical to the source file ex. index.js change
 typo: | white space fix or typo
 delete: | file deleted
 added: | file added
 
+more info of commit put in the description
 > *example:* 
 > 
-> ![commitTemplate_example](https://user-images.githubusercontent.com/77855014/136969598-76d9e69f-380a-4fe4-88e8-499ef28bf2af.png)
+> ![commitTemplate_ex](https://user-images.githubusercontent.com/77855014/136971254-2f400403-84b4-4276-b392-053aa044d5e2.png)
+>  
