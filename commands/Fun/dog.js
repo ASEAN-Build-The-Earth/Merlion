@@ -16,7 +16,7 @@ module.exports = {
           .setAuthor(`${message.author.username}`, `${message.author.displayAvatarURL({ dynamic: true })}`)
           .setTitle ('Here Have a dog image')
           .setImage (response.data.message)
-          message.channel.send(dog);
+          message.channel.send({ embeds: [dog] });
         });  
           
     },

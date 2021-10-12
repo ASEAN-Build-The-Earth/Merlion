@@ -11,7 +11,7 @@ const Status = new Discord.MessageEmbed()
       { name: "Server Is Alive", value: "Server is currently alive and well" },
     )
    .setFooter( 'Rerember this is manualy set so it may be outdated');
-   message.channel.send(Status);
+   message.channel.send({ embeds: [Status]});
 }
 }
 

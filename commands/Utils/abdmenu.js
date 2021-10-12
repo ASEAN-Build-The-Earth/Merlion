@@ -15,7 +15,7 @@ module.exports = {
 			  { name: "TINmenu", value: "Grabs dog images and stuff (Dosnt exist yet)" },
 			)
 		   .setFooter( 'Rerember this is manualy updated.');
-		   message.channel.send(devtodo);
+		   message.channel.send({ embeds: [devtodo]});
 		}
 		}
 	

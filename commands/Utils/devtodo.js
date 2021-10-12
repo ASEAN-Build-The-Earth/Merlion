@@ -14,7 +14,7 @@ module.exports = {
 			  { name: "APIs", value: "add more support for APIs eg dog api and cat API" },
 			)
 		   .setFooter( 'Rerember this is manualy updated.');
-		   message.channel.send(devtodo);
+		   message.channel.send({ embeds: [devtodo]});
 		}
 		}
 	
