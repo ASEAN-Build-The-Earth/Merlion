@@ -65,6 +65,15 @@ How to install?
 
 <h2 align="center">
     <p>
-        uwu
+        Q and A
     </p>
 </h2>
+
+### Who we are?
+- developer team of ASEAN BTE Discord
+### What even is Asean BTE
+- asean bte is a sub catagory(sea countrys) of [Build The Earth project](https://www.youtube.com/c/BuildTheEarth)
+### What is this
+- we develop discord bot named Merlion here. this bot helps organize the discord server and such
+### Why should i help
+- we need help ;w;
