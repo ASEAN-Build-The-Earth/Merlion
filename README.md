@@ -1,7 +1,7 @@
 # ASEAN BTE MERLION DISCORD BOT
 Asean BTE Merlion Discord bot 
 
-For Contributors please see [Our Code Of Conduct](https://github.com/ASEAN-Build-The-Earth/Merlion/blob/main/CODE_OF_CONDUCT.md) and [Our Contributing guie](https://github.com/ASEAN-Build-The-Earth/Merlion/blob/main/CONTRIBUTING.md)
+For Contributors please see [Our Code Of Conduct](https://github.com/ASEAN-Build-The-Earth/Merlion/blob/main/CODE_OF_CONDUCT.md) and [Our Contributing guide](https://github.com/ASEAN-Build-The-Earth/Merlion/blob/main/CONTRIBUTING.md)
 
 > Authors:Association of Southeast Asian Nations Build The Earth
 > 
