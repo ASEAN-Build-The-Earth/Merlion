@@ -2,7 +2,7 @@
     "name": "Merlion",
     "version": "BETA v0.3.2",
     "author": [
-        "CookieGMVN#9173", "Glowstone#3991"
+        "CookieGMVN#9173", "Glowstone#3991, dirtytin#5972, iOnly#0273"
     ],
     "description": "Asean BTE Merlion Discord bot",
     "main": "index.js",
@@ -25,3 +25,4 @@
         "discord.js": "^13.2.0",
         "moment": "^2.29.1"
     }
+} 
