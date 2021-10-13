@@ -11,7 +11,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "mocha"
-    "start": "node ."
+    "start" "node ."
   },
   "repository": {
     "type": "git",
