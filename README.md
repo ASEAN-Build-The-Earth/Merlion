@@ -21,6 +21,7 @@ Some requirements
 How to install?
 - clone this repository to your pc/laptop
 - cd to the folder
+- go to /data/, then rename auth.example.json to auth.json
 - run npm ci, then npm start.
 ---
 

@@ -38,28 +38,6 @@ client.once('ready', () => {
 });
 
 
-//covid count code test
-const axios = require('axios');
-const countries = require("./countries.json");
-const url = 'https://api.covid19api.com/total/country/';
-const WAKE_COMMAND = '/cases';
-client.on('messageCreate', async(msg) => {
-    const content = msg.content.split(/[ ,]+/);
-    if (content[0] === WAKE_COMMAND) {
-        if (content.length > 2) {
-            msg.reply("Too many arguments...")
-        } else if (content.length === 1) {
-            msg.reply("Not enough arguments")
-        } else if (!countries[content[1]]) {
-            msg.reply("Wrong country format")
-        } else {
-            const slug = content[1]
-            const payload = await axios.get(`${url}${slug}`)
-            const covidData = payload.data.pop();
-            msg.reply(`Confirmed: ${covidData.Confirmed}, Deaths: ${covidData.Deaths}, Recovered: ${covidData.Recovered}, Active: ${covidData.Active} `)
-        }
-    }
-});
 //All the autoresponders
 
 client.on('messageCreate', message => {
