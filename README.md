@@ -76,7 +76,7 @@ Join out discord! [here](https://discord.com/invite/tat2uggfeX)
 ### Who we are?
 - developer team of ASEAN BTE Discord
 ### What even is Asean BTE
-- asean bte is team of South East Asia Countrys thats part of the [Build The Earth project](https://www.youtube.com/c/BuildTheEarth)
+- asean bte is team of Southeast Asian Countries thats part of the [Build The Earth project](https://www.youtube.com/c/BuildTheEarth)
 ### What is this
 - we develop discord bot named Merlion here. this bot helps organize the discord server and such
 ### Why should i help
