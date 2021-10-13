@@ -1,6 +1,8 @@
 //index.js - Main file of ASEAN  discord bot
-//Made by CookieGMVN, StoneMc, dirtytin
-//version 0.2
+//Made by Association of Southeast Asian Nations Build The Earth
+//version BETA v0.3.2
+//Phats is cool
+//Turtle
 const fs = require('fs');
 const { Client, Intents, Collection } = require('discord.js');
 const { prefix } = require('./data/config.json');
