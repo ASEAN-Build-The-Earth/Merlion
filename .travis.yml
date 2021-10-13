@@ -4,3 +4,5 @@ node_js:
 before_install:
   - npm i -g npm@version-number
   - npm cache clean
+git:
+  depth: false
