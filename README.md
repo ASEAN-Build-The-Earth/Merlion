@@ -1,5 +1,7 @@
 # ASEAN BTE MERLION DISCORD BOT
 Asean BTE Merlion Discord bot 
+[![Build Status](https://app.travis-ci.com/ASEAN-Build-The-Earth/Merlion.svg?branch=main)](https://app.travis-ci.com/ASEAN-Build-The-Earth/Merlion) [![Known Vulnerabilities](https://snyk.io/test/github/ASEAN-Build-The-Earth/Merlion/badge.svg)] [![GitHub license](https://img.shields.io/github/license/ASEAN-Build-The-Earth/Merlion)](https://github.com/ASEAN-Build-The-Earth/Merlion/blob/main/LICENSE)
+
 
 For Contributors please see [Our Code Of Conduct](https://github.com/ASEAN-Build-The-Earth/Merlion/blob/main/CODE_OF_CONDUCT.md) and [Our Contributing guide](https://github.com/ASEAN-Build-The-Earth/Merlion/blob/main/CONTRIBUTING.md)
 
