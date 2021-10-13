@@ -1,8 +1,13 @@
-//index.js - Main file of ASEAN  discord bot
-//Made by Association of Southeast Asian Nations Build The Earth
-//version BETA v0.3.2
-//Phats is cool
-//Turtle
+/* * * * * * * * * * * * * * * * * * * * * * * * *\
+ *
+ * FileName     :   index.js
+ * Author       :   Association of Southeast Asian Nations Build The Earth
+ * CreateTime   :   15-5-2021 
+ * Organization :   https://github.com/ASEAN-Build-The-Earth
+ * Description  :   Merlion discord bot core file
+ * FileType     :   JS File
+ *
+\* * * * * * * * * * * * * * * * * * * * * * * * */
 const fs = require('fs');
 const { Client, Intents, Collection } = require('discord.js');
 const { prefix } = require('./data/config.json');
