@@ -10,8 +10,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "mocha"
-    "start" "node ."
+    "test": "mocha",
+    "start": "node ."
   },
   "repository": {
     "type": "git",
