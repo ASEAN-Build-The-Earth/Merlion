@@ -1,7 +1,9 @@
 # ASEAN BTE MERLION DISCORD BOT
 Asean BTE Merlion Discord bot 
 
-> Authors: CookieGMVN, StoneMc
+For Contributors please see [Our Code Of Conduct](https://github.com/ASEAN-Build-The-Earth/Merlion/blob/main/CODE_OF_CONDUCT.md) and [Our Contributing guie](https://github.com/ASEAN-Build-The-Earth/Merlion/blob/main/CONTRIBUTING.md)
+
+> Authors:Association of Southeast Asian Nations Build The Earth
 > 
 > This discord bot was originally made for Asean build the earth. 
 > Bot had many basic features such as. Getting covid data and getting info if a mc server is online or not
@@ -21,8 +23,9 @@ Some requirements
 How to install?
 - clone this repository to your pc/laptop
 - cd to the folder
-- go to /data/, then rename auth.example.json to auth.json
 - run npm ci, then npm start.
+
+Join out discord! [here](https://discord.com/invite/tat2uggfeX)
 ---
 
 # Special Events
@@ -66,6 +69,15 @@ How to install?
 
 <h2 align="center">
     <p>
-        uwu
+        Q and A
     </p>
 </h2>
+
+### Who we are?
+- developer team of ASEAN BTE Discord
+### What even is Asean BTE
+- asean bte is a sub catagory(sea countrys) of [Build The Earth project](https://www.youtube.com/c/BuildTheEarth)
+### What is this
+- we develop discord bot named Merlion here. this bot helps organize the discord server and such
+### Why should i help
+- we need help ;w;
