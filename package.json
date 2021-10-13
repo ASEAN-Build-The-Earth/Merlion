@@ -1,26 +1,29 @@
 {
-  "name": "Merlion",
-  "version": "1.12",
-  "description": "Asean BTE Merlion Discord bot",
-  "main": "index.js",
-  "dependencies": {
-    "axios": "^0.23.0",
-    "discord.js": "^13.2.0",
-    "mocha": "^9.1.2"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "mocha"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ASEAN-Build-The-Earth/Merlion.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/ASEAN-Build-The-Earth/Merlion/issues"
-  },
-  "homepage": "https://github.com/ASEAN-Build-The-Earth/Merlion#readme"
+    "name": "Merlion",
+    "version": "BETA v0.3.2",
+    "author": [
+        "CookieGMVN#9173", "Glowstone#3991"
+    ],
+    "description": "Asean BTE Merlion Discord bot",
+    "main": "index.js",
+    "scripts": {
+        "start": "node ."
+        "test": "mocha",
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ASEAN-Build-The-Earth/Merlion.git"
+    },
+    "keywords": [],
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/ASEAN-Build-The-Earth/Merlion/issues"
+    },
+    "homepage": "https://github.com/ASEAN-Build-The-Earth/Merlion#readme",
+    "dependencies": {
+        "axios": "^0.21.4",
+        "discord.js": "^13.2.0",
+        "moment": "^2.29.1",
+        "mocha": "^9.1.2"
+    }
 }
