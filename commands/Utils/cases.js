@@ -1,5 +1,4 @@
-const axios = require('axios');
-const countries = require("../../countries.json");
+const axios = require('axios')
 module.exports = {
     name: "cases",
     execute(message, args) {
@@ -7,10 +6,6 @@ module.exports = {
         if (args.length <= 1) return message.reply("Not enough arguments")
         axios.get(`https://api.covid19api.com/total/country/${args[1]}`)
             .then(response => {
-                message.reply(`Confirmed: ${response.data.Confirmed},
-                Deaths: ${response.data.Deaths}, 
-                Recovered: ${response.data.Recovered}, 
-                Active: ${response.data.Active}`)
+                console.log(response.data);
             })
-    }
-}
+    }}
