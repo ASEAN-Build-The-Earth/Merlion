@@ -1,8 +1,8 @@
 const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js')
-const { execute } = require('./8ball')
 module.exports = {
     name: 'test1 for buttons',
     description: 'test for buttons feature',
+    aliases:[''],
     execute: async(client, message, args) => {
         const row = new MessageActionRow()
         .addComponents(
