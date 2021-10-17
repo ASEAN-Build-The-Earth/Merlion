@@ -79,12 +79,31 @@ client.on('messageCreate', message => {
         return command.execute(message, args, client);
     } catch (error) {
         console.error(error);
+       const Discord = require('discord.js')
         const ErrorEmbed = new Discord.MessageEmbed()
             .setColor("#ffb7c5")
             .setAuthor(`${message.author.tag}`, `${message.author.displayAvatarURL({ dynamic: true })}`)
             .addFields({ name: "ERR!", value: "Oops! I can't execute this command!" }, );
         return message.reply({ embeds: [ErrorEmbed] });
     }
+    const Discord = require('discord.js')
+const { MessageActionRow, MessageButton, } = require('discord.js');
+
+client.on('interactionCreate', async interaction => {
+	if (!interaction.isCommand()) return;
+
+	if (interaction.commandName === 'ping') {
+		const row = new MessageActionRow()
+			.addComponents(
+				new MessageButton()
+					.setCustomId('primary')
+					.setLabel('Primary')
+					.setStyle('PRIMARY'),
+			);
+
+		await interaction.reply({ content: 'Pong!', components: [row] });
+	}
+});
 });
 
 client.login(token)
