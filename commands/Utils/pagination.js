@@ -3,6 +3,7 @@ const { pagination } = require('reconlx')
 
 module.exports = {
     name:"pages",
+    aliases: ['pagestest'],
     /**
      * @param {Client}  client
      * @param {Message}  message
