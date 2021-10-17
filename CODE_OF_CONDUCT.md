@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 # Contributor Code of Conduct
-=======
-# Contributor Covenant Code of Conduct
->>>>>>> ec8d9fa0a575a7873ed5fd789f298339f59871c4
 
 ## Our Standards
 

@@ -1,10 +1,5 @@
 language: node_js
 node_js:
-<<<<<<< HEAD
   - 16
 git:
   depth: false
-=======
-  - 7
-  - 14
->>>>>>> ec8d9fa0a575a7873ed5fd789f298339f59871c4
