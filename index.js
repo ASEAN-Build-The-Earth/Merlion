@@ -3,13 +3,13 @@
  * FileName     :   index.js
  * Author       :   Association of Southeast Asian Nations Build The Earth
  * CreateTime   :   15-5-2021 
- * Organization :   https://github.com/ASEAN-Build-The-Earth
+ * Organization :   https://github.com/ASEAN-Build-The-Eart
  * Description  :   Merlion discord bot core file
  * FileType     :   JS File
  *
 \* * * * * * * * * * * * * * * * * * * * * * * * */
 const fs = require('fs');
-const { Client, Intents, Collection } = require('discord.js');
+const { Client, Intents, Collection, MessageActionRow, MessageButton, MessageEmbed } = require('discord.js');
 const { prefix } = require('./data/config.json');
 const { token } = require("./data/auth.json")
 
@@ -20,7 +20,7 @@ const client = new Client({
             Intents.FLAGS.GUILD_BANS,
             Intents.FLAGS.GUILD_MEMBERS,
             Intents.FLAGS.GUILD_MESSAGES,
-            Intents.FLAGS.GUILD_WEBHOOKS,
+            Intents.FLAGS.GUILD_WEBHOOKS, 
             Intents.FLAGS.GUILD_VOICE_STATES
         ] //,
         //partials: ["CHANNEL"]
@@ -34,7 +34,7 @@ for (const folder of commandFolders) {
         const command = require(`./commands/${folder}/${file}`);
         client.commands.set(command.name, command);
     }
-}
+}    const Discord = require('discord.js')
 client.on('interactionCreate', async interaction => {
 	if (!interaction.isCommand()) return;
 
@@ -100,8 +100,7 @@ client.on('messageCreate', message => {
             .addFields({ name: "ERR!", value: "Oops! I can't execute this command!" }, );
         return message.reply({ embeds: [ErrorEmbed] });
     }
-    const Discord = require('discord.js')
-const { MessageActionRow, MessageButton, } = require('discord.js');
+
 
 
 });
