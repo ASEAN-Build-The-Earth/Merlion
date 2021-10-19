@@ -11,7 +11,7 @@ module.exports = {
                 'yes definitely.',
                 'you may rely on it.',
                 'without a doubt.',
-                'signs point to yes.'
+                'signs point to yes.',
                 'most likely.',
                 'ask again later.',
                 'cannot predict now.',
