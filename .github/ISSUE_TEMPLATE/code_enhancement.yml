@@ -1,3 +1,5 @@
+name: Code Enhancement
+description: Found bad code writing to enhance?
 title: "[Enhance]: "
 labels: ["enhancement"]
 body:
