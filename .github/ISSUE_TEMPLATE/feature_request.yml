@@ -14,7 +14,7 @@ body:
     attributes:
       label: "How:"
       description: How does this feature works? How can we actually try out your feature? 
-      placeholder: "I've strumble upon this interesting [{solution}](https://youtu.be/dQw4w9WgXcQ), I'd like to request you this..."
+      placeholder: "I've strumble upon this interesting {...}, I'd like to request you this..."
   - type: textarea
     id: additional
     attributes:
