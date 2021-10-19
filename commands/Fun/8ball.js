@@ -21,7 +21,7 @@ module.exports = {
                 'outlook not so good.'
             ]
             let mygroceries = groceries[Math.floor(Math.random() * groceries.length)]
-            message.reply('My opinion ' + mygroceries)
+            message.reply('My opinion, ' + mygroceries)
         }
     },
 };
