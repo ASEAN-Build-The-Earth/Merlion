@@ -4,7 +4,7 @@ title: "[Enhance]: "
 labels: ["enhancement"]
 body:
   - type: textarea
-    id: where
+    id: enhanceLocation
     attributes:
       label: "Where?"
       description: Where is the code you wanted to enhance, you can copy file's permanants link or manually type the file path for us to know.
@@ -12,7 +12,7 @@ body:
     validations:
       required: true
   - type: textarea
-    id: what
+    id: describe
     attributes:
       label: "What?"
       description: What happen with this code, why does it need Enhancement
