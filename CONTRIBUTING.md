@@ -130,3 +130,10 @@ Once your PR is merged, your contributions will be publicly visible on this Gith
   - **review our code**, *our code isnt perfect. we'd like if you can review and make some improvement out of it.*
 </details>
 
+---
+
+<h2 align="center">
+    <p>
+        Hey dont forget to star this repo :> 🌟
+    </p>
+</h2>
