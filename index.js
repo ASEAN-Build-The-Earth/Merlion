@@ -9,9 +9,10 @@
  *
 \* * * * * * * * * * * * * * * * * * * * * * * * */
 const fs = require('fs');
-const { Client, Intents, Collection, MessageActionRow, MessageButton, MessageEmbed } = require('discord.js');
+const { Client, Intents, Collection, Message,   } = require('discord.js');
 const { prefix } = require('./data/config.json');
-const { token } = require("./data/auth.json")
+const { token } = require("./data/auth.json");
+const { MessageComponentInteraction } = require('discord.js');
 
 const client = new Client({
     intents: [
@@ -35,27 +36,25 @@ for (const folder of commandFolders) {
         client.commands.set(command.name, command);
     }
 }    
-client.on('interactionCreate', async interaction => {
-	if (!interaction.isCommand()) return;
-
-	if (interaction.commandName === 'ping') {
-		const row = new MessageActionRow()
-			.addComponents(
-				new MessageButton()
-					.setCustomId('primary')
-					.setLabel('Primary')
-					.setStyle('PRIMARY'),
-			);
-
-		await interaction.reply({ content: 'Pong!', components: [row] });
-	}
-});
 
 client.once('ready', () => {
     console.log('Ready!');
     client.user.setActivity(`YOU`, {
         type: "WATCHING",
     });
+});
+const filter = (button) => button.clicker.user.id === message.author.id
+const collector = Message.createButtonCollector(filter , { time: 60000 })
+collector.on('collect', async i => {
+	if (i.customId === 'primary') {
+		await i.update({ content: 'A button was clicked!', components: [] });
+	}
+});
+
+collector.on('end', collected => console.log(`Collected ${collected.size} items`));
+client.on('interactionCreate', interaction => {
+	if (!interaction.isButton()) return;
+	console.log(interaction);
 });
 
 
