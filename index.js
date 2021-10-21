@@ -9,10 +9,12 @@
  *
 \* * * * * * * * * * * * * * * * * * * * * * * * */
 const fs = require('fs');
-const { Client, Intents, Collection, Message,   } = require('discord.js');
+
+const { Client, Intents, Collection, interaction,  } = require('discord.js');
 const { prefix } = require('./data/config.json');
 const { token } = require("./data/auth.json");
 const { MessageComponentInteraction } = require('discord.js');
+const { Interaction } = require('discord.js');
 
 const client = new Client({
     intents: [
@@ -43,8 +45,9 @@ client.once('ready', () => {
         type: "WATCHING",
     });
 });
-const filter = (button) => button.clicker.user.id === message.author.id
-const collector = Message.createButtonCollector(filter , { time: 60000 })
+const filter = m => m.content.includes('discord');
+
+const collector = interaction.channels.createMessageCollector({ filter, time: 15000 });
 collector.on('collect', async i => {
 	if (i.customId === 'primary') {
 		await i.update({ content: 'A button was clicked!', components: [] });
