@@ -1,23 +1,17 @@
-* **Please check if the PR fulfills these requirements**
-- [ ] The commit message follows our guidelines
-- [ ] Tests for the changes have been added (for bug fixes / features)
-- [ ] Docs have been added / updated (for bug fixes / features)
+<!-- *Pleases answer these question before submitting PR(or make this PR readable for reviewer), 
+*you can delete the template if you want as long as the context is readable -->
 
+### Changes: 
+<!-- Please describe changes you've done in this pull request -->
 
-* **What kind of change does this PR introduce?** (Bug fix, feature, docs update, ...)
+<!--Example: 
+  - fixed code typo
+  - added code error catcher
+  - deleted useless stuff
+-->
 
+### New Feature:
+<!-- What new feature do we have in this pull request -->
 
-
-* **What is the current behavior?** (You can also link to an open issue here)
-
-
-
-* **What is the new behavior (if this is a feature change)?**
-
-
-
-* **Does this PR introduce a breaking change?** (What changes might users need to make in their application due to this PR?)
-
-
-
-* **Other information**:
+### Additional Context:
+<!-- preview image of this pull request changes? -->
