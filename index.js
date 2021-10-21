@@ -53,7 +53,7 @@ for (const folder of commandFolders) {
     }
     catch(error)
     {
-        console.log("Cannot find Images directory")
+        console.log("Cannot find Images directory:\n" + error);
     }
 }
 
