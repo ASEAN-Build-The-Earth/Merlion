@@ -1,0 +1,30 @@
+name: Feature Request
+description: Create a report to help us improve
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: "Feature:"
+      description: What is this feature, what does this feature do.
+      placeholder: So, I want a feature to...
+  - type: textarea
+    id: solution
+    attributes:
+      label: "How:"
+      description: How does this feature works? How can we actually try out your feature? 
+      placeholder: "I've strumble upon this interesting {...}, I'd like to request you this..."
+  - type: textarea
+    id: additional
+    attributes:
+      label: "Additional Context:"
+      description: Add any other context or screenshots about the feature request.
+#  - type: checkboxes
+#    id: terms
+#    attributes:
+#      label: Code of Conduct
+#      description: By submitting this issue, you agree to follow our [Code of Conduct.](https://github.com/ASEAN-Build-The-Earth/Merlion/blob/main/CODE_OF_CONDUCT.md)
+#      options:
+#        - label: I agree to follow this project's Code of Conduct
+#          required: true

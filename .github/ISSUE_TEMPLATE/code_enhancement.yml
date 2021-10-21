@@ -1,0 +1,35 @@
+name: Code Enhancement
+description: Found bad code writing to enhance?
+title: "[Enhance]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: enhanceLocation
+    attributes:
+      label: "Where?"
+      description: Where is the code you wanted to enhance, you can copy file's permanants link or manually type the file path for us to know.
+      placeholder: This code at src/commands/uwu.js 
+    validations:
+      required: true
+  - type: textarea
+    id: describe
+    attributes:
+      label: "What?"
+      description: What happen with this code, why does it need Enhancement
+      placeholder: At Line 21 seems to have bad writing that it create memory leaks and...
+    validations:
+      required: true
+  - type: textarea
+    id: tofix
+    attributes:
+      label: "How To Fix?"
+      description: How should we fix this problem? doesnt have to be correct, you can pass to anyone to fix.
+      placeholder: I Still don't know how but maybe someone can try...
+    validations:
+      required: true
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Add any other context or screenshots about the problem.
+      placeholder: Leave this without any text if not prefer.
