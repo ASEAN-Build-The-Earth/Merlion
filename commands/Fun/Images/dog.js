@@ -4,17 +4,16 @@ const axios = require('axios');
 
 module.exports = {
     name: 'dog',
-    description: 'USes an API to grab dog images',
+    description: 'Uses an API to grab dog images',
     execute(message, args) {
-        axios.get('https://dog.ceo/api/breeds/image/random')
+        axios.get('https://some-random-api.ml/img/dog')
             .then(async response => {
-                console.log(response.data.message);
 
                 const dog = new Discord.MessageEmbed()
-                    .setColor('#00FF00')
+                    .setColor('#d27979')
                     .setAuthor(`${message.author.username}`, `${message.author.displayAvatarURL({ dynamic: true })}`)
-                    .setTitle('Here Have a dog image')
-                    .setImage(response.data.message)
+                    .setTitle('Here have a dog image')
+                    .setImage(response.data.link)
                 message.reply({ embeds: [dog] });
             });
 

@@ -34,6 +34,27 @@ for (const folder of commandFolders) {
         const command = require(`./commands/${folder}/${file}`);
         client.commands.set(command.name, command);
     }
+    
+ // ===== TEMPOLARY SPECIAL FILE SEARCHING =====
+ // - it search for commands in ./commands/Fun/Images since the code above dont support 2nd folder step.
+    const funImageDirectory = "./commands/Fun/Images";
+    try 
+    {
+        if (fs.existsSync(funImageDirectory)) 
+        {
+            console.log("Image directory exists")
+            const funImagesFile = fs.readdirSync(funImageDirectory).filter(file => file.endsWith('.js'));
+            for (const file of funImagesFile) 
+            {
+                const specialCommand = require(`${funImageDirectory}/${file}`);
+                client.commands.set(specialCommand.name, specialCommand);
+            }
+        } 
+    }
+    catch(error)
+    {
+        console.log("Cannot find Images directory:\n" + error);
+    }
 }
 
 
