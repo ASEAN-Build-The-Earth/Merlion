@@ -3,18 +3,15 @@
  * FileName     :   index.js
  * Author       :   Association of Southeast Asian Nations Build The Earth
  * CreateTime   :   15-5-2021 
- * Organization :   https://github.com/ASEAN-Build-The-Eart
+ * Organization :   https://github.com/ASEAN-Build-The-Earth
  * Description  :   Merlion discord bot core file
  * FileType     :   JS File
  *
 \* * * * * * * * * * * * * * * * * * * * * * * * */
 const fs = require('fs');
-
-const { Client, Intents, Collection, interaction,  } = require('discord.js');
+const { Client, Intents, Collection } = require('discord.js');
 const { prefix } = require('./data/config.json');
-const { token } = require("./data/auth.json");
-const { MessageComponentInteraction } = require('discord.js');
-const { Interaction } = require('discord.js');
+const { token } = require("./data/auth.json")
 
 const client = new Client({
     intents: [
@@ -23,7 +20,7 @@ const client = new Client({
             Intents.FLAGS.GUILD_BANS,
             Intents.FLAGS.GUILD_MEMBERS,
             Intents.FLAGS.GUILD_MESSAGES,
-            Intents.FLAGS.GUILD_WEBHOOKS, 
+            Intents.FLAGS.GUILD_WEBHOOKS,
             Intents.FLAGS.GUILD_VOICE_STATES
         ] //,
         //partials: ["CHANNEL"]
@@ -37,7 +34,6 @@ for (const folder of commandFolders) {
         const command = require(`./commands/${folder}/${file}`);
         client.commands.set(command.name, command);
     }
-
     
  // ===== TEMPOLARY SPECIAL FILE SEARCHING =====
  // - it search for commands in ./commands/Fun/Images since the code above dont support 2nd folder step.
@@ -61,31 +57,19 @@ for (const folder of commandFolders) {
     }
 }
 
+
 client.once('ready', () => {
     console.log('Ready!');
     client.user.setActivity(`YOU`, {
         type: "WATCHING",
     });
 });
-const filter = m => m.content.includes('discord');
-
-const collector = interaction.channels.createMessageCollector({ filter, time: 15000 });
-collector.on('collect', async i => {
-	if (i.customId === 'primary') {
-		await i.update({ content: 'A button was clicked!', components: [] });
-	}
-});
-
-collector.on('end', collected => console.log(`Collected ${collected.size} items`));
-client.on('interactionCreate', interaction => {
-	if (!interaction.isButton()) return;
-	console.log(interaction);
-});
 
 
-//All the autoresponders
+
 
 client.on('messageCreate', message => {
+// === All the autoresponders ===
     if (message.content === "<@850730172630302720>" || message.content === "<@!850730172630302720>") {
         message.reply(`Hi ${message.author}, My Prefix is \`${prefix}\`!`)
     }
@@ -106,6 +90,7 @@ client.on('messageCreate', message => {
     }
     if (!message.content.startsWith(prefix)) return;
 
+// === Message and command handler ====
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const commandName = args.shift().toLowerCase();
     const command = client.commands.get(commandName) ||
@@ -117,16 +102,12 @@ client.on('messageCreate', message => {
         return command.execute(message, args, client);
     } catch (error) {
         console.error(error);
-       const Discord = require('discord.js')
         const ErrorEmbed = new Discord.MessageEmbed()
             .setColor("#ffb7c5")
             .setAuthor(`${message.author.tag}`, `${message.author.displayAvatarURL({ dynamic: true })}`)
             .addFields({ name: "ERR!", value: "Oops! I can't execute this command!" }, );
         return message.reply({ embeds: [ErrorEmbed] });
     }
-
-
-
 });
 
 client.login(token)
