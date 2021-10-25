@@ -1,4 +1,5 @@
 {
+    "bot_name" : "Merlion",
     "prefix": "$",
     "owners": ["Glowstone#3991", "CookieGMVN#9173", "dirtytin#5972"]
 }

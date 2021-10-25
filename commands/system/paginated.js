@@ -1,8 +1,10 @@
+// example file from: https://github.com/sapphiredev/examples/tree/main/examples/with-javascript
+
 const { Command } = require('@sapphire/framework');
 const { PaginatedMessage } = require('@sapphire/discord.js-utilities');
 const { send } = require('@sapphire/plugin-editable-commands');
 const { MessageEmbed } = require('discord.js');
-const { sendLoadingMessage } = require('../../src/lib/util.js');
+const { sendLoadingMessage } = require('../../utility/util.js');
 
 class UserCommand extends Command {
 	constructor(context, options) {

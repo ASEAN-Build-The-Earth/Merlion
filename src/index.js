@@ -18,7 +18,7 @@ const client = new SapphireClient(
 	{
 		defaultPrefix: prefix,
 		regexPrefix: /^(hey +)?bot[,! ]/i,
-		caseInsensitiveCommands: false,
+		caseInsensitiveCommands: true,
 		logger: {
 			level: LogLevel.Debug
 		},

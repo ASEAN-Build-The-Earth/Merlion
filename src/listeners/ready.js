@@ -1,7 +1,7 @@
 // upgraded from: https://github.com/sapphiredev/examples/blob/main/examples/with-javascript/src/listeners/ready.js
 
 const { Listener } = require('@sapphire/framework');
-const { prefix, owners } = require("../data/config.json");
+const { prefix, owners, bot_name } = require("../data/config.json");
 
 const dev = process.env.NODE_ENV !== 'production';
 
@@ -53,13 +53,13 @@ class UserEvent extends Listener
 
         // Banner
 		console.log(
-        `- - - - - - - - - - - - - - - - - - - - - - - - - - -\n`
+        `- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n`
 		+ String.raw`
-            ${line01} ${pad}${'v1.0.0'}
+            ${line01} ${pad}${`${bot_name} v1.0.0`}
             ${line02} ${pad}[${success}] Gateway
             ${line03}${dev ? ` ${pad}${'<'}${'/'}${'>'} ${'DEVELOPMENT MODE'}` : ''}
 		`.trim()
-        + `\n\n- - - - - - - - - - - - - - - - - - - - - - - - - - -`
+        + `\n\n- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -`
 		);
 	}
 

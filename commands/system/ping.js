@@ -1,3 +1,4 @@
+// example file from: https://github.com/sapphiredev/examples/tree/main/examples/with-javascript
 
 const { Command } = require("@sapphire/framework");
 const { send } = require("@sapphire/plugin-editable-commands");
@@ -8,7 +9,7 @@ class UserCommand extends Command {
 			...options,
       		name: "ping",
 			aliases: ["pnig", "pign"],
-			description: "ping pong"
+			description: "ping pong",
 		});
 	}
 
