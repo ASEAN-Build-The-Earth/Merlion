@@ -8,7 +8,7 @@ class UserCommand extends Command {
 			...options,
       		name: "ping",
 			aliases: ["pnig", "pign"],
-			description: "ping pong",
+			description: "ping pong"
 		});
 	}
 

@@ -38,7 +38,7 @@ const client = new SapphireClient(
 	}
 );
 
-
+// main() login function.
 const main = async () => {
 	try 
     {
@@ -55,9 +55,38 @@ const main = async () => {
 	}
 };
 
+// Catch unecpected warning
 process.on('warning', (warning) => 
 {
     console.log(warning.stack);
 });
 
+
 main();
+
+//#region ===== Auto Responser =====
+// [Request]: a way to make messageCreate events out of this.
+client.on('messageCreate', message => 
+	{
+		if (message.content === "<@850730172630302720>" || message.content === "<@!850730172630302720>") {
+			message.reply(`Hi ${message.author}, My Prefix is \`${prefix}\`!`)
+		}
+		if (message.content.toLowerCase() === 'hi') {
+			return message.reply('Hi :)');
+		}
+		if (message.content.toLowerCase() === 'xbox') {
+			return message.reply('Is Sus');
+		}
+		if (message.content.toLowerCase() === 'phats') {
+			return message.reply('https://media.discordapp.net/attachments/832603438285062164/869838594859237418/render_2021-07-21_15.32.09.gif');
+		}
+		if (message.content.toLowerCase() === 'how to join') {
+			return message.reply('Please read <#789012857798000690>');
+		}
+		if (message.content.toLowerCase() === 'how do i join') {
+			return message.reply('Please read <#789012857798000690>');
+		}
+		if (!message.content.startsWith(prefix)) return;
+	}
+);
+//#endregion auto_response
