@@ -1,12 +1,9 @@
 {
 	"name": "Merlion",
-	"version": "BETA v0.3.2",
-	"author": [
-		"CookieGMVN#9173",
-		"Glowstone#3991"
-	],
+	"version": "v1.0.0",
+	"author": "ASEAN BuildTheEarth",
 	"description": "Asean BTE Merlion Discord bot",
-	"main": "index.js",
+	"main": "./src/index.js",
 	"scripts": {
 		"start": "node .",
 		"test": "mocha"
@@ -22,9 +19,13 @@
 	},
 	"homepage": "https://github.com/ASEAN-Build-The-Earth/Merlion#readme",
 	"dependencies": {
+		"@sapphire/framework": "^2.1.3",
+		"@sapphire/plugin-api": "^3.0.1",
+		"@sapphire/plugin-editable-commands": "^1.0.1",
+		"@sapphire/plugin-logger": "^2.0.1",
 		"axios": "^0.21.4",
 		"discord.js": "^13.2.0",
-		"moment": "^2.29.1",
-		"mocha": "^9.1.2"
+		"mocha": "^9.1.2",
+		"moment": "^2.29.1"
 	}
 }
