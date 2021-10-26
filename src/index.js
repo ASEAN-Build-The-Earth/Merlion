@@ -34,15 +34,16 @@ const client = new SapphireClient(
 			'DIRECT_MESSAGES',
 			'DIRECT_MESSAGE_REACTIONS'
 		],
-		baseUserDirectory: __dirname,
+		baseUserDirectory: __dirname
 	}
 );
 
-// main() login function.
+//#region main() login function.
 const main = async () => {
 	try 
     {
 		client.logger.info('Logging in. . .');
+		// see: [1]
 		client.stores.get('commands').registerPath(join(__dirname, '..', 'commands\\'));
 
 		await client.login(token);
@@ -63,6 +64,29 @@ process.on('warning', (warning) =>
 
 
 main();
+//#endregion main()
+
+/**[1]
+ * By default, sapphire reads this folder structure
+ * ```
+ * /home/me/my-bot
+ * ├─ src
+ * │  ├─ commands
+ * │  ├─ events
+ * │  └─ index.js
+ * └─ package.json
+ * ```
+ * We will change it to:
+ * ```
+ * /home/me/my-bot
+ * ├─ commands
+ * │
+ * ├─ src
+ * │  ├─ events
+ * │  └─ index.js
+ * └─ package.json
+ * ```
+ */ 
 
 //#region ===== Auto Responser =====
 // [Request]: a way to make messageCreate events out of this.

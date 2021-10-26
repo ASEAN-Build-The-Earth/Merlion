@@ -29,11 +29,13 @@ class UserEvent extends Listener
     initializeBot(client)
     {
         // set activity to our bot
+        /*
         client.user.setPresence({
             status: "offline",
             activity: { name: `@${client.user.username} help` },
             type: "LISTENING",
         });
+        */
 
         client.user.setActivity(`YOU`, {
             type: "WATCHING",
