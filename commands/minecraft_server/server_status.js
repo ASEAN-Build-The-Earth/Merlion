@@ -20,6 +20,7 @@ class NewCommand extends SubCommandPluginCommand {
                 { input: "json", output: "raw" },
                 { input: "rawinfo", output: "raw" },
                 { input: "rawdata", output: "raw" },
+                { input: "rawstatus", output: "raw" },
                 "online",
                 { input: "down", output: "online" },
                 { input: "online?", output: "online" },

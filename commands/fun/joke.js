@@ -14,6 +14,7 @@ class NewCommand extends Command {
 
 	async messageRun(message) 
 	{
+        const { logger } = this.container;
         const temp = new Discord.MessageEmbed()
             .setColor("#b3b3ff")
             .setDescription("*thinking joke*");
@@ -37,6 +38,8 @@ class NewCommand extends Command {
 
             // edit the embed with grabbed joke
             return get(message).edit({ embeds: [joke] });
+        }).catch((error) => {
+            logger.error(`Could not send Cases Message to ${message.author.tag}.\n`, error);
         });
 	}//end of command
 }

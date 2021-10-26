@@ -19,16 +19,21 @@ class NewCommand extends Command
 	async messageRun(message) 
 	{
         const { logger } = this.container;
+        let success = false;
         const temp = new MessageEmbed()
             .setColor("#ff1a1a")
             .setDescription("*triggerizing . . .*");
         // send await embed waiting for bot to grab api
         await send(message, { embeds: [temp] });
+        
+
 
         setTimeout(() => {
             const errorEmbed = new MessageEmbed()
                 .setColor("#ff1a1a") // red
                 .setDescription("*sorry, I cant be triggered*");
+
+            if(success) return;
             // send error if takes too long to response
             return get(message).edit({ embeds: [errorEmbed] });
         }, 10000/*10 secs*/);
@@ -55,7 +60,7 @@ class NewCommand extends Command
             logger.debug(`Generating triggered meme for mentioned user: ${MentionMemberAvatar}\n`
             + `Generated Gif: https://some-random-api.ml/canvas/triggered?avatar=${MentionMemberAvatar}`);
 
-            return get(message).edit({ embeds: [triggerEmbed], files: [attachment]  });
+            return get(message).edit({ embeds: [triggerEmbed], files: [attachment]  }).then(() => { success = true; });
         // * * * IF REACHED -> END OF FILE 
         }
 
@@ -74,7 +79,7 @@ class NewCommand extends Command
         logger.debug(`Generating triggered meme for author: ${authorAvatar}\n`
         + `Generated Gif: https://some-random-api.ml/canvas/triggered?avatar=${authorAvatar}`);
 
-        return get(message).edit({ embeds: [triggerEmbed], files: [attachment]  });
+        return get(message).edit({ embeds: [triggerEmbed], files: [attachment]  }).then(() => { success = true; });
 	} // end of commands
 }
 

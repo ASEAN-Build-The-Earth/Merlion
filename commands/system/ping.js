@@ -3,7 +3,7 @@
 const { Command } = require("@sapphire/framework");
 const { send } = require("@sapphire/plugin-editable-commands");
 
-class UserCommand extends Command {
+class NewCommand extends Command {
 	constructor(context, options) {
 		super(context, {
 			...options,
@@ -25,4 +25,4 @@ class UserCommand extends Command {
 	}
 }
 
-module.exports.UserCommand = UserCommand;
+module.exports.NewCommand = NewCommand;

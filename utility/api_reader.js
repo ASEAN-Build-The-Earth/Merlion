@@ -1,5 +1,5 @@
 /**
- * Uased in: "../commands/fun/api_images/animals.js"
+ * Used in: "../commands/fun/api_images/animals.js"
  */
 const { send, get } = require("@sapphire/plugin-editable-commands");
 const axios = require('axios');
@@ -7,6 +7,7 @@ const Discord = require('discord.js');
 
 async function InitNewAnimalCommand(message, name, api, color)
 {
+    let success = false;
     const temp = new Discord.MessageEmbed()
     .setColor(color)
     .setDescription(`*thinking ${name}*`);
@@ -17,6 +18,8 @@ async function InitNewAnimalCommand(message, name, api, color)
         const errorEmbed = new Discord.MessageEmbed()
             .setColor("#ff1a1a") // red
             .setDescription(`*sorry, I cant think of any ${name}*`);
+
+        if(success) return;
         // send error if takes too long to respons
         return get(message).edit({ embeds: [errorEmbed] });
     }, 10000/*10 secs*/);
@@ -31,7 +34,9 @@ async function InitNewAnimalCommand(message, name, api, color)
         .setImage(response.data.link)
 
         // edit the embed with grabbed joke
-        return get(message).edit({ embeds: [animal] });
+        return get(message).edit({ embeds: [animal] }).then(() => { success = true; });
+    }).catch((error) => {
+        console.log(`Could not send Cases Message to ${message.author.tag}.\n`, error);
     });
 }
 
