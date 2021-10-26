@@ -19,6 +19,15 @@ const client = new SapphireClient(
 		defaultPrefix: prefix,
 		regexPrefix: /^(hey +)?bot[,! ]/i,
 		caseInsensitiveCommands: true,
+		defaultCooldown: {
+			delay: 1000, // 1 secs default
+			limit: 1
+			/**more options 
+			scope: BucketScope,
+			filteredUsers: Snowflake[],
+			filteredCommands: string[]
+			*/
+		},
 		logger: {
 			level: LogLevel.Debug
 		},
@@ -43,7 +52,7 @@ const main = async () => {
 	try 
     {
 		client.logger.info('Logging in. . .');
-		// see: [1]
+		// see: Notes[1]
 		client.stores.get('commands').registerPath(join(__dirname, '..', 'commands\\'));
 
 		await client.login(token);
@@ -66,7 +75,7 @@ process.on('warning', (warning) =>
 main();
 //#endregion main()
 
-/**[1]
+/**Notes[1]
  * By default, sapphire reads this folder structure
  * ```
  * /home/me/my-bot
@@ -87,6 +96,13 @@ main();
  * └─ package.json
  * ```
  */ 
+/**
+ * Notes[2]: by default sapphire pick folder's exact name as command category.
+ * ├─ commands
+ * │  └─ fun
+ * │      └─ uwu.js
+ * └─ "uwu.js" now have category of ["fun"] by default.
+ */
 
 //#region ===== Auto Responser =====
 // [Request]: a way to make messageCreate events out of this.

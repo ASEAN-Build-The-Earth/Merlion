@@ -1,5 +1,5 @@
 const { Command } = require("@sapphire/framework");
-const { reply, get, send } = require("@sapphire/plugin-editable-commands");
+const { reply, get } = require("@sapphire/plugin-editable-commands");
 const Discord = require("discord.js");
 
 class NewCommand extends Command 
@@ -10,10 +10,9 @@ class NewCommand extends Command
 			...options,
       		name: "help",
 			aliases: ["helps", "hlep"],
-            category: "test",
 			description: "a description",
             detailedDescription: "this is so detailed",
-            usage: "uwu"
+            cooldownDelay: 3000
 		});
 	}
 

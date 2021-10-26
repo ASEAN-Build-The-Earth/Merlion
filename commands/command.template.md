@@ -12,7 +12,6 @@ class NewCommand extends Command
 			...options,
       		name: "name",
 			aliases: ["nmae", "naem"],
-            category: "test",
 			description: "a description",
             detailedDescription: "this is so detailed"
 		});
