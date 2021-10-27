@@ -11,6 +11,12 @@ class NewCommand extends SubCommandPluginCommand {
 			aliases: ["server", "srv", "ssrv"],
 			description: "Asean bte minecraft server commands",
 			subCommands: [
+                /**advaliable commands:
+                 * <prefix>server status - tell base server status
+                 * <prefix>server raw - give raw json data of server
+                 * <prefix>server online - tell if server online or not
+                 * <prefix>server ip - tell server ip
+                 */
                 { input: "status", default: true },
                 { input: "stat", output: "status" }, 
                 { input: "stats", output: "status" },
@@ -24,7 +30,8 @@ class NewCommand extends SubCommandPluginCommand {
                 "online",
                 { input: "down", output: "online" },
                 { input: "online?", output: "online" },
-                { input: "down?", output: "online" }
+                { input: "down?", output: "online" },
+                "ip"
             ],
             cooldownDelay: 5000
 		});
@@ -138,6 +145,11 @@ class NewCommand extends SubCommandPluginCommand {
             return get(message).edit({ embeds: [statusEmbed] }).then(() => { success = true; });
         });
     }//end of online command
+
+    async ip(message)
+    {
+        return send(message, "asean.my.to");
+    }
 }
 
 module.exports.NewCommand = NewCommand;

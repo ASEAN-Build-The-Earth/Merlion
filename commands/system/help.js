@@ -2,7 +2,7 @@ const { Command } = require("@sapphire/framework");
 const { reply, get } = require("@sapphire/plugin-editable-commands");
 const Discord = require("discord.js");
 
-class NewCommand extends Command 
+class HelpCommand extends Command 
 {
 	constructor(context, options) 
     {
@@ -83,4 +83,4 @@ class NewCommand extends Command
 	}
 }
 
-module.exports.NewCommand = NewCommand;
+module.exports.HelpCommand = HelpCommand;

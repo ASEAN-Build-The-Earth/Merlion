@@ -1,4 +1,4 @@
-const { Command, Logger } = require("@sapphire/framework");
+const { Command } = require("@sapphire/framework");
 const { send } = require("@sapphire/plugin-editable-commands");
 const { MessageActionRow, MessageButton, MessageEmbed } = require('discord.js');
 
@@ -9,6 +9,7 @@ class NewCommand extends Command {
       		name: "button",
 			aliases: ["uwu", "owo"],
 			description: "ping pong",
+            preconditions: ["ownerOnly"]
 		});
 	}
 
@@ -32,6 +33,7 @@ class NewCommand extends Command {
             
         const filter = i => i.customId === 'uwu';// && i.user.id === '122157285790187530';
 
+        // creating button collector to listen to user's input
         const collector = message.channel.createMessageComponentCollector({ filter, time: 15000 });
 
         collector.on('collect', async i => {

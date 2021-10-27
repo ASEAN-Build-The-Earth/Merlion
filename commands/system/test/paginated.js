@@ -12,7 +12,8 @@ class UserCommand extends Command {
 			...options,
 			aliases: ['pm'],
 			description: 'A command that uses paginated messages.',
-			generateDashLessAliases: true
+			generateDashLessAliases: true,
+            preconditions: ["ownerOnly"]
 		});
 	}
 

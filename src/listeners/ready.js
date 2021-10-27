@@ -80,11 +80,16 @@ class UserEvent extends Listener
             let front = (i == list.length - 1) ? "└─ ": "├─ ";
             list[i] = front.concat(list[i]);
         }
+        
+        let ownersString = "";
+        owners.forEach((e, i) => {
+            ownersString = ownersString.concat(e.name + `${i < owners.length - 1 ? ", " : ""}`)
+        });
 
         console.log(``
         + `Logged in  as ${client.user.username}#${client.user.discriminator}\n`
         + `└─ prefix: ${prefix}\n`
-        + `└─ owners: ${owners.toString().replace(",", ", ")}\n`
+        + `└─ owners: ${ownersString}\n`
         + `\t└─ Registered commands at:\n\t\t${list.toString().replace(",", "\n\t\t")}`);
         //#endregion
 

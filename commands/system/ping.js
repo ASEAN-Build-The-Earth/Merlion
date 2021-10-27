@@ -3,7 +3,7 @@
 const { Command } = require("@sapphire/framework");
 const { send } = require("@sapphire/plugin-editable-commands");
 
-class NewCommand extends Command {
+class PingCommand extends Command {
 	constructor(context, options) {
 		super(context, {
 			...options,
@@ -25,4 +25,4 @@ class NewCommand extends Command {
 	}
 }
 
-module.exports.NewCommand = NewCommand;
+module.exports.PingCommand = PingCommand;

@@ -1,5 +1,18 @@
 {
     "bot_name" : "Merlion",
     "prefix": "$",
-    "owners": ["Glowstone#3991", "CookieGMVN#9173", "dirtytin#5972"]
+    "owners": [
+        {
+            "name" : "Glowstone#3991",
+            "id" : "693455709081305128"
+        }, 
+        {
+            "name" : "CookieGMVN#9173",
+            "id" : "584411132769337440"
+        }, 
+        {
+            "name" : "dirtytin#5972",
+            "id" : "481786697860775937"
+        }
+    ]
 }

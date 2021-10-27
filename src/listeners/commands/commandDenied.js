@@ -3,7 +3,7 @@ const { Listener } = require('@sapphire/framework');
 const Discord = require('discord.js');
 const { send, get } = require("@sapphire/plugin-editable-commands");
 
-let errorMessageSent = false;
+let errorMessageSent = 0;
 
 class UserEvent extends Listener 
 {
@@ -20,36 +20,58 @@ class UserEvent extends Listener
 	async run(error, { message }) 
 	{
 		const { logger } = this.container;
+		const defaultRateLimit = 5000;
+		const defaultMessageLimit = 2;
 
 		// catch expected error (ex. spam timeout)
 		if(error.identifier !== undefined)
 		{
 			switch(error.identifier)
 			{
-				// modifying built-in cool down error message here
+				// modifying built-in cooldown error message here
 				case "preconditionCooldown":
 				{
-					logger.debug(`[e] - timeout cooldown triggered: ${error.identifier} | by: ${message.author}`);
+					logger.debug(`[E] - timeout cooldown triggered: ${error.identifier} | by: ${message.author}`);
 
 					const temp = new Discord.MessageEmbed()
 					.setColor("#ff1a1a")
 					.setDescription(`ey ey, no spam, wait more ${Math.ceil(error.context.remaining / 1000)} second${error.context.remaining > 1000 ? 's' : ''}`);
 
-					if(!errorMessageSent)
+					if(errorMessageSent < defaultMessageLimit)
 					{	
 						return send(message, { embeds: [temp] })
-						.then(() => { errorMessageSent = true;
+						.then(() => { errorMessageSent += 1;
 							setTimeout(() => {
 								get(message).delete();
-								errorMessageSent = false;
+								errorMessageSent -= 1;
 							}, error.context.remaining);
+						});
+					}
+				}
+
+				case "ownerOnly":
+				{
+					logger.debug(`[E] - someone trying to use ${error.identifier} command! | by: ${message.author}`);
+
+					const temp = new Discord.MessageEmbed()
+					.setColor("#ff1a1a")
+					.setDescription(`hey this command is for bot owner only`);
+
+					if(errorMessageSent < defaultMessageLimit)
+					{	
+						return send(message, { embeds: [temp] })
+						.then(() => { errorMessageSent += 1;
+							setTimeout(() => { // delete the message after ... seconds
+								get(message).delete();
+								errorMessageSent -= 1;
+							}, defaultRateLimit);
 						});
 					}
 				}
 
 				default:
 				{
-					return logger.error("Unecpected error!: ", JSON.stringify(error));
+					return logger.error("Unexpected error!: ", JSON.stringify(error));
 				}
 			}
 			

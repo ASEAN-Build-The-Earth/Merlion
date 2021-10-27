@@ -15,7 +15,8 @@ class UserCommand extends SubCommandPluginCommand {
                 'remove', 
                 'reset', 
                 { input: 'show', default: true }
-            ]
+            ],
+            preconditions: ["ownerOnly"]
 		});
 	}
 
