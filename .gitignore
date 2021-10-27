@@ -2,3 +2,5 @@
 node_modules
 ### Some Screet file ###
 auth.json*
+### BuilsTheEarth Admin Token ###
+bte_token.json*

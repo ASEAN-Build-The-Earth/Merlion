@@ -47,6 +47,7 @@ class UserEvent extends Listener
 							}, error.context.remaining);
 						});
 					}
+					break;
 				}
 
 				case "ownerOnly":
@@ -67,6 +68,7 @@ class UserEvent extends Listener
 							}, defaultRateLimit);
 						});
 					}
+					break;
 				}
 
 				default:
