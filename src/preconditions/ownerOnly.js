@@ -1,4 +1,3 @@
-
 const { Precondition } = require('@sapphire/framework');
 const { owners } = require('../data/config.json');
 

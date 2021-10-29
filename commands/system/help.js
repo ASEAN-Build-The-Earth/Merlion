@@ -12,7 +12,8 @@ class HelpCommand extends Command
 			aliases: ["helps", "hlep"],
 			description: "a description",
             detailedDescription: "this is so detailed",
-            cooldownDelay: 3000
+            cooldownDelay: 3000,
+            preconditions: ["workInProgress"]
 		});
 	}
 

@@ -13,12 +13,12 @@ class NewCommand extends Command {
       		name: "bte",
             aliases: ["aseanbte", "asean-bte", "btebuild", "bte-build", "aseanbte-build", "aseanbtebuild"], 
 			description: "Show on going project of asean bte",
-            cooldownDelay: 60000
+            cooldownDelay: 30000
 		});
 	}
 
     /// [TODO] - unique ID for collector, currently collector can only be deploy once
-
+    
 	async messageRun(message) 
 	{
     //#region DEPLOYMENT
@@ -41,45 +41,58 @@ class NewCommand extends Command {
 
     //#region SETTING
         //build a button
+        const uid = function() { // unique id generators
+            return Date.now().toString(36) + Math.random().toString(36).substr(2);
+        };  const id = `bte_api_${uid()}`;
+        
         let displayEmbed = new MessageEmbed();
         let buttonComponent = new MessageActionRow()
         .addComponents(
             new MessageButton()
                 .setLabel("more site")
-                .setCustomId('bte_api') // custom ID to trigger button collector
+                .setCustomId(id) // custom ID to trigger button collector
                 .setStyle('PRIMARY') // blurple style
-        );
-
+        ); 
+        
         // create button collector to listen to user's input
-        const filter = i => i.customId === "bte_api";
+        const filter = i => i.customId === id;
         const collector = message.channel.createMessageComponentCollector({ filter, time: 60000 }); //adviable for 1 mins
+        let inProgress = false;
     //#endregion SETTING
 
     //#region RUNTIME
+        
         collector.on("collect", async i => 
         {
-            if (i.customId === "bte_api") 
+            if (i.customId === id && !inProgress) 
             {
-                await get(message).edit({ embeds: [fetchLoadingEmbed()] });
+                inProgress = true;
+                await i.deferUpdate();
+                buttonComponent.components[0].setDisabled(true).setStyle("SECONDARY").setLabel("●●●");
+                get(message).edit({ embeds: [fetchLoadingEmbed()], components: [buttonComponent] });
+                
                 
                 fetchWebsite((response) => 
                 {
+                    buttonComponent.components[0].setDisabled(false).setStyle("PRIMARY").setLabel("more site");
                     displayEmbed = fetchNewSite(response.data.locations);
                     return get(message).edit({ embeds: [displayEmbed] })
-                        .then(() => { // then add cooldown 1 seconds before making button work again(prevent spam)
-                            setTimeout(() => { i.deferUpdate(); }, 1000)  }); 
+                        .then(() => { // then add cooldown 2 seconds before making button work again(prevent spam)
+                            setTimeout(() => { get(message).edit({ components: [buttonComponent] }); inProgress = false; }, 2000)  }); 
                 });
+                
             }
         });
 
         collector.on("end", collected => 
-        {
-            buttonComponent.components[0].setDisabled(true).setStyle("SECONDARY");
-            logger.debug(`Collector has ended - Collected ${collected.size} items`);
-            return get(message).edit({ embeds: [displayEmbed], components: [buttonComponent] })
+        {  // on button expire
+            buttonComponent.components[0].setDisabled(true).setStyle("SECONDARY").setLabel("expired");
+            logger.debug(`Collector has ended - Collected ${collected.size} items (id: ${id})`);
+            return get(message).edit({ components: [buttonComponent] })
         });
+        
 
-        fetchWebsite((response) => 
+        fetchWebsite((response) => // on embed deploy 
         {
             displayEmbed = fetchNewSite(response.data.locations);
             return get(message).edit({ embeds: [displayEmbed], components: [buttonComponent] }).then(() => { deploySuccess = true; });
@@ -134,6 +147,8 @@ class NewCommand extends Command {
                 .setFooter(". . .");
             return loadingEmbed;
         }
+
+        
         
 	}//end of command
 }

@@ -149,7 +149,7 @@ class NewCommand extends SubCommandPluginCommand {
     async ip(message)
     {
         return send(message, "asean.my.to");
-    }
+    }//end of ip command
 }
 
 module.exports.NewCommand = NewCommand;

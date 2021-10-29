@@ -71,6 +71,27 @@ class UserEvent extends Listener
 					break;
 				}
 
+				case "workInProgress":
+				{
+					logger.debug(`[E] - someone invoked ${error.identifier} command! | by: ${message.author}`);
+
+					const temp = new Discord.MessageEmbed()
+					.setColor("#ff1a1a")
+					.setDescription(`hey sorry, this command is a work-in-progress`);
+
+					if(errorMessageSent < defaultMessageLimit)
+					{	
+						return send(message, { embeds: [temp] })
+						.then(() => { errorMessageSent += 1;
+							setTimeout(() => { // delete the message after ... seconds
+								get(message).delete();
+								errorMessageSent -= 1;
+							}, defaultRateLimit);
+						});
+					}
+					break;
+				}
+
 				default:
 				{
 					return logger.error("Unexpected error!: ", JSON.stringify(error));
