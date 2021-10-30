@@ -53,7 +53,7 @@ const main = async () => {
     {
 		client.logger.info('Logging in. . .');
 		// see: Notes[1]
-		client.stores.get('commands').registerPath(join(__dirname, '..', 'commands\\'));
+		client.stores.get('commands').registerPath(join(__dirname, '..', 'commands'));
 
 		await client.login(token);
 	}
