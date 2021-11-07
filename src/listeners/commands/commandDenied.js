@@ -44,7 +44,7 @@ class UserEvent extends Listener
 							setTimeout(() => {
 								get(message).delete();
 								errorMessageSent -= 1;
-							}, error.context.remaining);
+							}, error.context.remaining >= defaultMessageLimit ? error.context.remaining : defaultMessageLimit);
 						});
 					}
 					break;

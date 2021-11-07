@@ -7,7 +7,7 @@ class NewCommand extends Command {
 		super(context, {
 			...options,
       		name: "button",
-			aliases: ["uwu", "owo"],
+			aliases: ["uwus", "owos"],
 			description: "ping pong",
             preconditions: ["ownerOnly"]
 		});

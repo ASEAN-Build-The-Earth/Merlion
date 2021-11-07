@@ -8,16 +8,16 @@
  * FileType     :   JS File
  *
 \* * * * * * * * * * * * * * * * * * * * * * * * */
-require('./lib/setup.js');
+require("./lib/setup.js");
 const { LogLevel, SapphireClient } = require("@sapphire/framework");
 const { prefix } = require("./data/config.json");
 const { token } = require("./data/auth.json");
-const { join } = require('path');
+const { join } = require("path");
 
 const client = new SapphireClient(
 	{
-		defaultPrefix: prefix,
-		regexPrefix: /^(hey +)?bot[,! ]/i,
+		defaultPrefix: prefix.norminal,
+		regexPrefix: new RegExp(prefix.special.full_regex, "i"), //see: Notes[3]
 		caseInsensitiveCommands: true,
 		defaultCooldown: {
 			delay: 1000, // 1 secs default
@@ -102,6 +102,20 @@ main();
  * │  └─ fun
  * │      └─ uwu.js
  * └─ "uwu.js" now have category of ["fun"] by default.
+ */
+/**
+ * Notes[3]: Regex Prefixes, more human readable prefix
+ * learnmore: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
+ * 
+ * Example: 
+ * /^((hey +)|(oi +))?(((bot +|merlion +|someone +)?((pls +|please +)?(gib|give|send|sent|pls|please)))|pls|please)[,! ]/i,
+ * 	Matches:
+ * 	 hey bot <command>,
+ * 	 hey merlion pls gib <command>,
+ * 	 pls <command>,
+ *   pls gib <command>,
+ * 	 oi bot pls gib <command>,
+ * 	 hey merlion please sent <command>
  */
 
 //#region ===== Auto Responser =====

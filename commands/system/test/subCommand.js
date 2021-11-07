@@ -7,7 +7,7 @@ class UserCommand extends SubCommandPluginCommand {
 	constructor(context, options) {
 		super(context, {
 			...options,
-            aliases: ["pls"],
+            aliases: ["plsz"],
 			description: 'A basic command with some subcommands',
 			subCommands: [
                 'add', 
