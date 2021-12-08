@@ -66,9 +66,10 @@ client.once('ready', () => {
 });
 
 
-//All the autoresponders
+
 
 client.on('messageCreate', message => {
+// === All the autoresponders ===
     if (message.content === "<@850730172630302720>" || message.content === "<@!850730172630302720>") {
         message.reply(`Hi ${message.author}, My Prefix is \`${prefix}\`!`)
     }
@@ -89,6 +90,7 @@ client.on('messageCreate', message => {
     }
     if (!message.content.startsWith(prefix)) return;
 
+// === Message and command handler ====
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const commandName = args.shift().toLowerCase();
     const command = client.commands.get(commandName) ||
