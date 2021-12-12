@@ -4,7 +4,7 @@
         "norminal": "$",
         "special": {
             "method": "regular expressions",
-            "full_regex": "^((hey +)|(oi +))?(((bot +|merlion +|someone +)?((pls +|please +)?(gib|give|send|sent|pls|please)))|pls|please)[,! ]",
+            "full_regex": "^((hey +)|(oi +))?(((bot +|merlion +|someone +)?((pls +|please +)?(gib|give|send|sent|pls|please)))|pls|please|send|sent|gib|give)[,! ]",
             "examples": [
                 "hey bot <command>",
                 "hey merlion pls <command>",
