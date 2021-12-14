@@ -62,7 +62,7 @@ class NewCommand extends SubCommandPluginCommand {
 
             const statusEmbed = new Discord.MessageEmbed()
             .setColor(online ? "#42f560" : "#949494")
-            .setThumbnail("https://raw.githubusercontent.com/ASEAN-Build-The-Earth/AseanBTE-Website/main/Assets/Images/aseanBTE_logo.gif")
+            .setThumbnail("https://raw.githubusercontent.com/ASEAN-Build-The-Earth/AseanBTE-Website/main/Assets/Images/icons/aseanbte_logo.gif")
             .setTitle("asean.my.to | minecraft server")
             .addFields(
                 { name: "status", value: `└─ ${online ? "online :white_check_mark:" : "offline :warning: "}` },
@@ -96,7 +96,7 @@ class NewCommand extends SubCommandPluginCommand {
         .then(async response => 
         {
             const statusEmbed = new Discord.MessageEmbed()
-            .setAuthor("asean.my.to", "https://raw.githubusercontent.com/ASEAN-Build-The-Earth/AseanBTE-Website/main/Assets/Images/aseanBTE_logo.gif"/*, [website link] */)
+            .setAuthor("asean.my.to", "https://raw.githubusercontent.com/ASEAN-Build-The-Earth/AseanBTE-Website/main/Assets/Images/icons/aseanbte_logo.gif"/*, [website link] */)
             .setColor("#949494")
             .addFields(
                 { 
@@ -136,7 +136,7 @@ class NewCommand extends SubCommandPluginCommand {
         {   
             let online = response.data.online ? true : false;
             const statusEmbed = new Discord.MessageEmbed()
-            .setAuthor("asean.my.to", "https://raw.githubusercontent.com/ASEAN-Build-The-Earth/AseanBTE-Website/main/Assets/Images/aseanBTE_logo.gif"/*, [website link] */)
+            .setAuthor("asean.my.to", "https://raw.githubusercontent.com/ASEAN-Build-The-Earth/AseanBTE-Website/main/Assets/Images/icons/aseanbte_logo.gif"/*, [website link] */)
             .setColor(online ? "#42f560" : "#949494")
             .setTitle(`Server is ${online ? "online" : "offline"}`)
             .setFooter((new Date()).toUTCString());

@@ -122,7 +122,7 @@ class NewCommand extends Command {
             let apiEmbed = new MessageEmbed()
                 .setColor("#42f560")
                 .setAuthor("Asean Build The Earth | Build sites")
-                .setThumbnail("https://raw.githubusercontent.com/ASEAN-Build-The-Earth/AseanBTE-Website/main/Assets/Images/aseanBTE_logo.gif")
+                .setThumbnail("https://raw.githubusercontent.com/ASEAN-Build-The-Earth/AseanBTE-Website/main/Assets/Images/icons/aseanbte_logo.gif")
                 .setTitle(site.name).setURL(`https://buildtheearth.net/locations/${site.id}`)
                 .addFields(
                     { name: "regions owned", value: `└─ ${site.regions}`, inline: true },
@@ -138,7 +138,7 @@ class NewCommand extends Command {
             let loadingEmbed = new MessageEmbed()
                 .setColor("#949494")
                 .setAuthor("Asean Build The Earth | Build sites")
-                .setThumbnail("https://raw.githubusercontent.com/ASEAN-Build-The-Earth/AseanBTE-Website/main/Assets/Images/aseanBTE_logo.gif")
+                .setThumbnail("https://raw.githubusercontent.com/ASEAN-Build-The-Earth/AseanBTE-Website/main/Assets/Images/icons/aseanbte_logo.gif")
                 .setTitle(". . .")
                 .addFields(
                     { name: "regions owned", value: "└─ . . .", inline: true },

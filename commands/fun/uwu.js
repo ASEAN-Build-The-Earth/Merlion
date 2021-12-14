@@ -37,7 +37,14 @@ class UwuCommand extends Command {
             return send(message, uwuifailed);
 
         // arguments not failed
-        const argsSentence = await args.rest("string");
+        let argsSentence = await args.rest("string");
+
+        // bad bad bad
+        if(argsSentence.match(/@here|@everyone/gi)) {
+            argsSentence = argsSentence.replace(/@here/gi, "๑here");
+            argsSentence = argsSentence.replace(/@everyone/gi, "๑everyone");
+        }
+
         if(argslength === 1)
         {
             const uwuified = await uwuifyerization(argsSentence, uwuifailed, "WORD");
