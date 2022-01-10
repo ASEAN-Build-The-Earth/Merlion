@@ -11,14 +11,14 @@
 require("./lib/setup.js");
 const { LogLevel, SapphireClient } = require("@sapphire/framework");
 const { prefix, dbLoginURL } = require("./data/config.json");
-const { token, db } = require("./data/auth.json");
 const { join } = require("path");
 const { InitDatabase } = require("./lib/setup.js");
+require("dotenv").config({ debug: process.env.DEBUG });
 
 const client = new SapphireClient(
 	{
 		defaultPrefix: prefix.norminal,
-		regexPrefix: new RegExp(prefix.special.full_regex, "i"), //see: Notes[3]
+		regexPrefix: new RegExp(prefix.regex, "i"), //see: Notes[3]
 		caseInsensitiveCommands: true,
 		defaultCooldown: {
 			delay: 1000, // 1 secs default
@@ -48,7 +48,10 @@ const client = new SapphireClient(
 	}
 );
 
-InitDatabase(dbLoginURL.replace("<username>", db.username).replace("<password>", db.password).replace("<databaseName>", db.databaseName));
+InitDatabase(dbLoginURL
+	.replace("<username>", process.env.DB_USER)
+	.replace("<password>", process.env.DB_PASS)
+	.replace("<databaseName>", process.env.DB_NAME));
 
 
 //#region main() login function.
@@ -59,7 +62,7 @@ const main = async () => {
 		// see: Notes[1]
 		client.stores.get('commands').registerPath(join(__dirname, '..', 'commands'));
 
-		await client.login(token);
+		await client.login(process.env.TOKEN);
 	}
     catch (error) 
     {

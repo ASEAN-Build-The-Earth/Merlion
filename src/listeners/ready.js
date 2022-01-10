@@ -1,9 +1,12 @@
 // upgraded from: https://github.com/sapphiredev/examples/blob/main/examples/with-javascript/src/listeners/ready.js
 
+require("dotenv").config({ debug: process.env.DEBUG });
 const { Listener } = require('@sapphire/framework');
 const { prefix, owners, bot_name } = require("../data/config.json");
+const { version } = require('../../package.json');
 
 const dev = process.env.NODE_ENV !== 'production';
+
 
 class UserEvent extends Listener
 {
@@ -57,7 +60,7 @@ class UserEvent extends Listener
 		console.log(
         `- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n`
 		+ String.raw`
-            ${line01} ${pad}${`${bot_name} v1.2.0`}
+            ${line01} ${pad}${`${bot_name} ${version}`}
             ${line02} ${pad}[${success}] Gateway
             ${line03}${dev ? ` ${pad}${'<'}${'/'}${'>'} ${'DEVELOPMENT MODE'}` : ''}
 		`.trim()
@@ -89,7 +92,7 @@ class UserEvent extends Listener
         console.log(``
         + `Logged in as ${client.user.username}#${client.user.discriminator}\n`
         + `└─ prefix: ${prefix.norminal}\n`
-        + `└─ regex prefix: ${prefix.special.examples[0]}, ${prefix.special.examples[1]}, ${prefix.special.examples[2]}\n`
+        + `└─ regex prefix: ${prefix.regex}\n`
         + `└─ owners: ${ownersString}\n`
         + `\t└─ Registered commands at:\n\t\t${list.toString().replace(",", "\n\t\t")}`);
         //#endregion

@@ -1,18 +1,24 @@
 const { Command } = require("@sapphire/framework");
 const { send, get } = require("@sapphire/plugin-editable-commands");
 const { MessageActionRow, MessageButton, MessageEmbed } = require("discord.js");
+
 const Api = require("../../utility/database/api.js")
-const available_type = ["shitpost", "animal", "food"]
+const { uploadImage } = require("../../utility/database/imgur.js");
+const { newuid } = require("../../utility/uniqueId.js");
+
+const available_type = ["shitpost", "dog", "cat", "anime", "builds", "meme"] // shitpost, dog, cat, anime, builds, meme
+const support_format = ["JPEG","PNG","GIF","APNG","TIFF","MP4","MPEG","AVI","WEBM"]
 
 //$addapi <category> <name(optional)>
-class NewCommand extends Command {
+class AddAPICommand extends Command {
 	constructor(context, options) {
 		super(context, {
 			...options,
       		name: "addapi",
 			aliases: ["urmom", "edrfgt"],
-			description: "ping pong",
-            cooldownDelay: 50000
+			description: "add your preferred data to our api!",
+            detailedDescription: "<prefix>addapi <category> <name>\n- category: shitpost, dog, cat, anime, builds, meme\nname - optional preferred name",
+            cooldownDelay: 5000
 		});
 	}
 
@@ -24,38 +30,40 @@ class NewCommand extends Command {
 
         await send(message, { embeds: [temp] }); // send await embed waiting for bot to grab api
 
+    //#region FILTER
+        let nestedName = "" // rest the orderes args array to one nested name
+        for (let i = 1; i < argsContext.length; i++) {
+            nestedName = nestedName.concat(i === 1? argsContext[i].value : " ".concat(argsContext[i].value));
+        } 
 
-        const registeredData = registerInput(message.attachments, argsContext[0], argsContext[1]); 
-       
-        const confirmEmbed = new MessageEmbed()
-            .setColor("#ff8f00")
-            .setTitle("Please confirm your data")
-            .addField("type", `└─ ${registeredData.type}`, true)
-            .addField("name", `└─ ${registeredData.name}`, true)
-            .addField("attachment url:", `${registeredData.attachment}`, false)
-            .setDescription("*be sure your data is correct!*")
-            .setImage(registeredData.attachment);
-
-        const api = new Api({
-            type: registeredData.type,
-            name: registeredData.name,
-            url: registeredData.attachment
-        });
-
+        const registeredData = registerInput(message.attachments, argsContext[0], nestedName); 
 
         if(registeredData.error !== null)
         {
             const errorEmbed = new MessageEmbed().setColor("#ee0004").setDescription(registeredData.error);
             return get(message).edit({ embeds: [errorEmbed] });
         }
+       
+        const confirmEmbed = new MessageEmbed()
+            .setColor("#ff8f00")
+            .setTitle("Please confirm your data")
+            .addField("type:", `   ${registeredData.type}`, true)
+            .addField("name:", `   ${registeredData.name === null? "`<not specified>`" : registeredData.name}`, true)
+            .addField("attachment url:", `${registeredData.attachment.url}`, false)
+            .setDescription("*be sure your data is correct!*")
+            .setThumbnail(registeredData.attachment.url);
+            
+
+        const api = new Api({
+            type: registeredData.type,
+            name: registeredData.name,
+            url: registeredData.attachment.url
+        });
+    //#endregion FILTER
            
-    //#region SETTING
-        //build a button
-        const uid = function() { // unique id generators
-            return Date.now().toString(36) + Math.random().toString(36).substr(2);
-        };  
-        const id_yes = `new_api_confirm_${uid()}`;
-        const id_no = `new_api_deny_${uid()}`;
+    //#region BUTTON_SETTINGS
+        const id_yes = `new_api_confirm_${newuid()}`; // generate unique id
+        const id_no = `new_api_deny_${newuid()}`;
 
         let buttonComponent = new MessageActionRow()
         .addComponents(
@@ -77,16 +85,15 @@ class NewCommand extends Command {
 
         const filter_R = i => i.customId === id_no && i.user.id === message.author.id;
         const collector_no = message.channel.createMessageComponentCollector({ filter_R, time: 60000 }); //adviable for 30 mins
-
-
-    //#endregion SETTING
+    //#endregion BUTTON_SETTINGS
+       
         await get(message).edit({ embeds: [confirmEmbed], components: [buttonComponent] }); //pop up comfirm embed
-
         let confirmation = {
             confirmed: false,
             response: null,
             expired: false,
         }
+
     //#region RUNTIME
         collector_yes.on("collect", async i => 
         {
@@ -109,8 +116,8 @@ class NewCommand extends Command {
             if (i.customId === id_no && confirmation.confirmed !== true) 
             {
                 await i.deferUpdate();
-                buttonComponent.components[0].setDisabled(true).setStyle("SECONDARY").setLabel("confirmed!");
-                buttonComponent.components[1].setDisabled(true).setStyle("SECONDARY").setLabel("confirmed!");
+                buttonComponent.components[0].setDisabled(true).setStyle("SECONDARY").setLabel("cancelled");
+                buttonComponent.components[1].setDisabled(true).setStyle("SECONDARY").setLabel("cancelled");
                 get(message).edit({ components: [buttonComponent] }).then(() => {
                     confirmation.confirmed = true;
                     confirmation.response = "no"
@@ -149,8 +156,6 @@ class NewCommand extends Command {
         
         
 	}
-
-    
 }
 
 function saveApi(api, comfirmation, message)
@@ -161,22 +166,29 @@ function saveApi(api, comfirmation, message)
     {
         case "yes":
         {
-            api.save() // save the data to database
+            console.log("api url:", api.url);
+
+            uploadImage(api.url, api.name, api.type, 
+            (result) => {
+                api.url = result[0].data.link; // switch raw discord link to new generated imgur link
+
+                api.save() // save the data to database
                 .then((result) => {
                     console.log("saved new api: ", result);
-
-                    confirmationEmbed.setDescription("saved!").setColor("#89eb34")
+                    confirmationEmbed.setTitle("Saved!").setDescription(`generated url: ${api.url}`).setColor("#89eb34")
                     return send(message, {embeds: [confirmationEmbed]})
                 }).catch((error) => {
                     console.log("error saving api: ", error);
                     confirmationEmbed.setDescription("error occured! please try again").setColor("#ee0004")
                     return send(message, {embeds: [confirmationEmbed]})
                 });
+            });
+
             break;
         }
         case "no":
         {
-            confirmationEmbed.setDescription("OK! cancelled").setColor("#89eb34");
+            confirmationEmbed.setTitle("OK!").setDescription("cancelled data").setColor("#ee0004");
             return send(message, {embeds: [confirmationEmbed]});
         }
     }
@@ -187,9 +199,8 @@ function registerInput(attachments, inputType, name)
 {
     let f_error = null
     const f_inputType = inputType !== undefined? inputType.value : null;
-    const f_name = name !== undefined? name.value : null
+    const f_name = name !== ""? name : null
     let f_attachment = null;
-    
 
     // filter
     if(attachments.size > 1) //only support 1 per message currently
@@ -197,21 +208,23 @@ function registerInput(attachments, inputType, name)
     else if(attachments.size < 1)
     {   f_error = "Hey, what attachment you want to add to the api? plese sent it!"; }
     else if(f_inputType === null)
-    {   f_error = "Hey, please specify category you wanted to add the attachment to out api! (`shitpost, animal, food`)"; }
+    {   f_error = "Hey, please specify category you wanted to add the attachment to our api! (`shitpost, dog, cat, anime, builds, meme`)"; }
     else if(!available_type.includes(f_inputType))
-    {   f_error = "Hey, you can only input the category `shitpost, animal, food`"; }
+    {   f_error = "Hey, you can only input the category `shitpost, dog, cat, anime, builds, meme`"; }
     else
     {
         attachments.forEach(element => {
-            f_attachment = element.url;
+            f_attachment = element;
         });
-    }
 
+        if(!support_format.includes(f_attachment.contentType.split("/")[1].toUpperCase())) // split contentType: image/<format> to <format>
+            f_error = "Hey, we only support the format of `JPEG, PNG, GIF, APNG, TIFF, MP4, MPEG, AVI, WEBM`"; 
+    }
 
     const registeredData = {
         type: f_inputType,
         name: f_name,
-        attachment: f_attachment,
+        attachment: f_attachment, // link is f_url[0].data.link
         error: f_error,
     }
 
@@ -219,4 +232,4 @@ function registerInput(attachments, inputType, name)
 }
 
 
-module.exports.NewCommand = NewCommand;
+module.exports.AddAPICommand = AddAPICommand;

@@ -1,9 +1,9 @@
+require("dotenv").config({ debug: process.env.DEBUG });
+
 const { Command } = require("@sapphire/framework");
 const { send, get } = require("@sapphire/plugin-editable-commands");
 const axios = require('axios');
 const { MessageActionRow, MessageButton, MessageEmbed } = require("discord.js");
-
-const { token } = require("../../utility/data/bte_token.json");
 const { pickRandom } = require("../../utility/random");
 
 class NewCommand extends Command {
@@ -103,7 +103,7 @@ class NewCommand extends Command {
         {
             axios.get("https://buildtheearth.net/api/v1/locations", {
                 headers: { // Authorize with api with admin token
-                    Authorization: "Bearer " + token 
+                    Authorization: "Bearer " + process.env.BTE_WEBSITE_TOKEN 
                 }
             })
             .then((response) => {

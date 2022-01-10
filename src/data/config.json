@@ -2,19 +2,7 @@
     "bot_name" : "Merlion",
     "prefix": {
         "norminal": "$",
-        "special": {
-            "method": "regular expressions",
-            "full_regex": "^((hey +)|(oi +))?(((bot +|merlion +|someone +)?((pls +|please +)?(gib|give|send|sent|pls|please)))|pls|please|send|sent|gib|give)[,! ]",
-            "examples": [
-                "hey bot <command>",
-                "hey merlion pls <command>",
-                "hey merlion pls gib <command>",
-                "pls <command>",
-                "pls gib <command>",
-                "oi bot pls gib <command>",
-                "hey merlion please sent <command>"
-            ]
-        }
+        "regex": "^((hey +)|(oi +))?(((bot +|merlion +|someone +)?((pls +|please +)?(gib|give|send|sent|pls|please)))|pls|please|send|sent|gib|give)[,! ]"
     },
     "owners": [
         {

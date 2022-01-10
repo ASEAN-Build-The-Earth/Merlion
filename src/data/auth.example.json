@@ -1,8 +1,0 @@
-{
-    "token": "YOUR_BOT_TOKEN",
-    "db": {
-        "username":"DATABASE_USERNAME",
-        "password":"DATABASE_PASSWORD",
-        "databaseName":"abase"
-    }
-}
