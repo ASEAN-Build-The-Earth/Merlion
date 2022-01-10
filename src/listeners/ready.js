@@ -57,7 +57,7 @@ class UserEvent extends Listener
 		console.log(
         `- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n`
 		+ String.raw`
-            ${line01} ${pad}${`${bot_name} v1.0.1`}
+            ${line01} ${pad}${`${bot_name} v1.2.0`}
             ${line02} ${pad}[${success}] Gateway
             ${line03}${dev ? ` ${pad}${'<'}${'/'}${'>'} ${'DEVELOPMENT MODE'}` : ''}
 		`.trim()
