@@ -30,13 +30,58 @@ For Contributors please see [Our Code Of Conduct](https://github.com/ASEAN-Build
 <details>
 <summary><i>Follow this steps</i></summary>
 
+<blockquote>
+<!-- template: gist.github.com/ImminentFate/931bd780de7fb2aecc376e7af446c5df -->
+<table><tbody><tr><td><sub><b>
+ 1. for this repos only, you'll need to create your discord bot to test out the code. (to create add new bot at <a href="https://discord.com/developers/applications">discord devs portal</a>)
+    
+</td></tr></tbody></table>
+<table><tbody><tr><td><sub><b>
+2. run <code>npm ci</code>, then <code>npm start</code>. to initialize project
+     
+</td></tr></tbody></table>
+    
+<table ><tbody ><tr><td><details ><summary><sub><b>3. see <a href="https://github.com/tintinkung/Merlion/blob/v1.2/.env.example.js">.env.example.js</a>, create a copy of it with the name `.env`. and convert to .env syntax and fill the data listed</b></sub><h6> .env.example.js </h6>
 
->   1. for this repos only, you'll need to create your discord bot to test out the code. (to create add new bot at [discord devs portal](https://discord.com/developers/applications))
->   2. run `npm ci`, then `npm start`. to initialize project
->   3. see the code at [project/data/auth.example.json](https://github.com/ASEAN-Build-The-Earth/Merlion/blob/main/data/auth.example.json), create a copy of it with the name `auth.json`. paste your bot token in there
->   4. invite the bot to your private discord server or whatever
->   5. run the bot (by `node .` in the console)
->   6. now you can try out your bot's code and do any edit you want!
+```javascript
+const env = {
+    // discord bot token 
+    "TOKEN":"YOUR_BOT_TOKEN",
+    
+    // database auths
+    "DB_USER":"USERNAME",
+    "DB_PASS":"PASSWORD",
+    "DB_NAME":"abase",
+}
+```
+</summary><hr>
+<h6>.env</h6>
+
+ ```txt
+# discord bot token 
+TOKEN = tHIsiIexAMpLeDisCodEboT.TokEn
+    
+# database auths
+DB_USER = Herbol
+DB_PASS = iLovePizza
+DB_NAME = MyDatabase
+```
+</details></td></tr></tbody>
+</table>
+
+<table><tbody><tr><td><sub><b>
+4. invite the bot to your private discord server or whatever
+
+</td></tr></tbody></table>
+<table><tbody><tr><td><sub><b>
+5. run the bot (by `node .` in the console)
+
+</td></tr></tbody></table>
+<table><tbody><tr><td><sub><b>
+6. now you can try out your bot's code and do any edit you want!
+
+</td></tr></tbody></table>
+</blockquote>
 </details>
 
 ### Requirements:
@@ -54,6 +99,87 @@ discord.js V13.0.0 or above
 > - if your node is up to date now, update discord.js
 > - to install discord.js v13, go [here](https://discordjs.guide/additional-info/changes-in-v13.html#before-you-start)
 </details>
+
+---
+# Project Hierarchy
+<table><tbody><tr><td><b><sub>
+    
+```py
+ /home/me/my-bot
+ ├─ 📁assets
+ ├─ 📂commands
+ │  └─ 📁category
+ │     └─ my_command.js
+ │
+ ├─ 📂src
+ │  ├─ 📁data
+ │  ├─ 📁lib
+ │  ├─ 📁listeners
+ │  ├─ 📁preconditions
+ │  └─ index.js
+ │  
+ ├─ 📂utility
+ └─ 🔒package.json
+```
+</sub>
+<h6>Project Hierarchy Overview,<br/>these folders shown should not be edited or moved</h6>
+</td></tr></tbody></table>
+
+### 📁assets
+<blockquote><details>
+  <summary>non-code storage folder</summary>
+
+  _\<wip\>_
+  </details></blockquote>
+    
+### 📁commands
+<blockquote><details>
+  <summary>discord interaction commands directory</summary>
+
+  _\<wip\>_
+  </details></blockquote>
+  
+<h3> 📁<code>src</code></h3>
+<blockquote><details>
+  <summary>directory of internal stuff</summary>
+
+  _\<wip\>_
+  </details></blockquote>
+  
+<h3> 📁<sub><code>src/</code></sub>data</h3>
+<blockquote><details>
+  <summary>non-code storage folder</summary>
+
+  _\<wip\>_
+  </details></blockquote>
+  
+<h3> 📁<sub><code>src/</code></sub>lib</h3>
+<blockquote><details>
+  <summary>utility library</summary>
+
+  _\<wip\>_
+  </details></blockquote>
+  
+<h3> 📁<sub><code>src/</code></sub>listeners</h3>
+<blockquote><details>
+  <summary>global interaction manager</summary>
+
+  _\<wip\>_
+  </details></blockquote>
+  
+<h3> 📁<sub><code>src/</code></sub>preconditions</h3>
+<blockquote><details>
+  <summary>command condition detector</summary>
+
+  _\<wip\>_
+  </details></blockquote>
+  
+### 📁utility
+<blockquote><details>
+  <summary>utility function/logic</summary>
+
+  _\<wip\>_
+  </details></blockquote>
 
 ---
 
