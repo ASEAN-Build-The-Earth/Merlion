@@ -23,4 +23,15 @@ const ApiSchema = new Schema(
 
 const Api = mongoose.model("Api", ApiSchema, "random_api")
 
-module.exports = Api;
+async function getName(api, name, callback)
+{
+    api.find({ name: name })
+    .then((data) => {
+        callback(data);
+    }).catch((error) => {
+        console.log("error getting api name: ", error);
+    });
+}
+
+module.exports.getName = getName;
+module.exports.Api = Api;
