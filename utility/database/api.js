@@ -33,5 +33,8 @@ async function getName(api, name, callback)
     });
 }
 
-module.exports.getName = getName;
+
+
 module.exports.Api = Api;
+
+module.exports.getName = getName;

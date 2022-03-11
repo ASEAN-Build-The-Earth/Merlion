@@ -79,11 +79,11 @@ class AddAPICommand extends Command {
             ); 
             
             // create button collector to listen to user's input
-            const filter = i => i.customId === id_yes && i.user.id === message.author.id;
-            const collector_yes = message.channel.createMessageComponentCollector({ filter, time: 60000 }); //adviable for 1 mins
+            const filter_y = i => i.customId === id_yes && i.user.id === message.author.id;
+            const collector_yes = message.channel.createMessageComponentCollector({ filter_y, time: 60000 }); //adviable for 1 mins
 
-            const filter_R = i => i.customId === id_no && i.user.id === message.author.id;
-            const collector_no = message.channel.createMessageComponentCollector({ filter_R, time: 60000 }); //adviable for 30 mins
+            const filter_n = i => i.customId === id_no && i.user.id === message.author.id;
+            const collector_no = message.channel.createMessageComponentCollector({ filter_n, time: 60000 }); //adviable for 1 mins
         //#endregion BUTTON_SETTINGS
         
             get(message).edit({ embeds: [confirmEmbed], components: [buttonComponent] }); //pop up comfirm embed

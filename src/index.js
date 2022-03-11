@@ -72,7 +72,7 @@ const main = async () => {
 	}
 };
 
-// Catch unecpected warning
+// Catch unexpected warning
 process.on('warning', (warning) => 
 {
     console.log(warning.stack);

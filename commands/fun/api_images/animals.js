@@ -112,12 +112,12 @@ class KoalaCommand extends Command { constructor(context, options) { super(conte
 
 
 // push all data to our module
-module.exports.DogCommand = DogCommand;
-module.exports.BirdCommand = BirdCommand;
-module.exports.CatCommand = CatCommand;
-module.exports.PandaCommand = PandaCommand;
+module.exports.DogCommand      = DogCommand;
+module.exports.BirdCommand     = BirdCommand;
+module.exports.CatCommand      = CatCommand;
+module.exports.PandaCommand    = PandaCommand;
 module.exports.RedPandaCommand = RedPandaCommand;
-module.exports.FoxCommand = FoxCommand;
-module.exports.RaccoonCommand = RaccoonCommand;
+module.exports.FoxCommand      = FoxCommand;
+module.exports.RaccoonCommand  = RaccoonCommand;
 module.exports.KangarooCommand = KangarooCommand;
-module.exports.KoalaCommand = KoalaCommand;
+module.exports.KoalaCommand    = KoalaCommand;
