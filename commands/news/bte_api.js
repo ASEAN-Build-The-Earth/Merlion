@@ -2,9 +2,10 @@ require("dotenv").config({ debug: process.env.DEBUG });
 
 const { Command } = require("@sapphire/framework");
 const { send, get } = require("@sapphire/plugin-editable-commands");
+const { fetch, FetchResultTypes } = require('@sapphire/fetch');
 const axios = require('axios');
 const { MessageActionRow, MessageButton, MessageEmbed } = require("discord.js");
-const { pickRandom } = require("../../utility/random");
+const { pickRandom } = require("#util/random.js");
 
 class NewCommand extends Command {
 	constructor(context, options) {
@@ -21,6 +22,13 @@ class NewCommand extends Command {
     
 	async messageRun(message) 
 	{
+        const data = await fetch('https://jsonplaceholder.typicode.com/todos/1', {
+                headers: { // Authorize with api with admin token
+                    Authorization: "Bearer " + process.env.BTE_WEBSITE_TOKEN 
+                }
+            }, FetchResultTypes.JSON)
+        console.log(data);
+
     //#region DEPLOYMENT
         let deploySuccess = false;
         const { logger } = this.container;

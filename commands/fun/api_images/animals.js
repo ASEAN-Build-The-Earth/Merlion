@@ -2,7 +2,7 @@
  * All data from: https://some-random-api.ml
  */
 const { Command } = require("@sapphire/framework");
-const reader = require("../../../utility/api_reader.js")
+const reader = require("#util/api_reader.js")
 
 const api = 
 {

@@ -2,9 +2,9 @@ const { Command } = require("@sapphire/framework");
 const { send, get } = require("@sapphire/plugin-editable-commands");
 const { MessageActionRow, MessageButton, MessageEmbed } = require("discord.js");
 
-const { Api, getName } = require("../../utility/database/api.js")
-const { uploadImage } = require("../../utility/database/imgur.js");
-const { newuid } = require("../../utility/uniqueId.js");
+const { Api, getName } = require("#util/database/api.js")
+const { uploadImage } = require("#util/database/imgur.js");
+const { newuid } = require("#util/uniqueId.js");
 
 const available_type = ["shitpost", "dog", "cat", "anime", "builds", "meme"] // shitpost, dog, cat, anime, builds, meme
 const support_format = ["JPEG","PNG","GIF","APNG","TIFF","MP4","MPEG","AVI","WEBM"]
