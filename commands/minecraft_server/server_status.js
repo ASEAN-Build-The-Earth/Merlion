@@ -1,20 +1,15 @@
-const { Logger } = require("@sapphire/framework");
-const { send, get } = require("@sapphire/plugin-editable-commands");
 const { SubCommandPluginCommand } = require('@sapphire/plugin-subcommands');
+const { MessageEmbed } = require('discord.js');
+const { send } = require("@sapphire/plugin-editable-commands");
+const { SendEmbed } = require("#util/embed.js");
+const { ServerStatus, MakeEmbed } = require("#util/server_status/internal.js");
 
-const axios = require('axios');
-const Discord = require('discord.js');
-
-// https://mcapi.us/server/status?ip=vps-b39d9702.vps.ovh.ca
-// proxy server: https://mcapi.us/server/status?ip=vps-b39d9702.vps.ovh.ca&port=25568
-// build server: https://mcapi.us/server/status?ip=vps-b39d9702.vps.ovh.ca&port=25569
-
-class NewCommand extends SubCommandPluginCommand {
+class ServerStatusCommand extends SubCommandPluginCommand {
 	constructor(context, options) {
 		super(context, {
             ...options,
 			aliases: ["server", "srv", "ssrv"],
-			description: "Asean bte minecraft server commands",
+			description: "ASEAN BTE minecraft server commands",
 			subCommands: [
                 /**advaliable commands:
                  * <prefix>server status - tell base server status
@@ -32,132 +27,58 @@ class NewCommand extends SubCommandPluginCommand {
                 { input: "rawinfo", output: "raw" },
                 { input: "rawdata", output: "raw" },
                 { input: "rawstatus", output: "raw" },
-                "online",
-                { input: "down", output: "online" },
-                { input: "online?", output: "online" },
-                { input: "down?", output: "online" },
                 "ip"
             ],
-            cooldownDelay: 5000
+            cooldownDelay: 0
 		});
 	}
 
-	async status(message) 
+    
+
+	async status(message, args) 
     {
-        let success = false;
-        const temp = new Discord.MessageEmbed()
-        .setColor("#b3b3ff")
-        .setDescription("*grabbing status. . .*");
-        // send await embed waiting for bot to grab api
-        await send(message, { embeds: [temp] });
-
-        setTimeout(() => {
-            const errorEmbed = new Discord.MessageEmbed()
-                .setColor("#ff1a1a") // red
-                .setDescription("*sorry, cant grab status*");
-            // send error if takes too long to respons
-            if(success) return;
-            return get(message).edit({ embeds: [errorEmbed] });
-        }, 10000/*10 secs*/);
-
-        axios.get("https://mcapi.us/server/status?ip=vps-b39d9702.vps.ovh.ca&port=25568")
-        .then(async response => 
-        {
-            let online = response.data.online ? true : false;
-
-            const statusEmbed = new Discord.MessageEmbed()
-            .setColor(online ? "#42f560" : "#949494")
-            .setThumbnail("https://raw.githubusercontent.com/ASEAN-Build-The-Earth/AseanBTE-Website/main/Assets/Images/icons/aseanbte_logo.gif")
-            .setTitle("139.99.91.188:25568 | minecraft server")
-            .addFields(
-                { name: "status", value: `└─ ${online ? "online :white_check_mark:" : "offline :warning: "}` },
-                { name: "players:", value: `└─ ${response.data.players.now} / ${response.data.players.max}`, inline: true },
-                { name: "server", value: `└─ ${response.data.server.name}`, inline: true },
-            )
-            .setFooter((new Date()).toUTCString());
-            return get(message).edit({ embeds: [statusEmbed] }).then(() => { success = true; });
+        const pendingEmbed = new SendEmbed(message)
+        await pendingEmbed.sendPendingEmbed("_grabbing status. . ._", "_Sorry, failed to get server status_", { timeout: 10000 })
+        const server = await MakeEmbed.ServerFilter(args);
+        ServerStatus.getStatus.then(async (response) => {
+            const statusEmbed = MakeEmbed.get(server, response);
+            pendingEmbed.resolve(statusEmbed);
+        })
+        .catch((error) => {
+            const errorEmbed = new MessageEmbed().setColor("#ff1a1a").setDescription("_Sorry, unable to get data_");
+            pendingEmbed.reject({embed: errorEmbed, error: { data: error, message:"failed to fetch server status api" }})
         });
-	}//end of status command
+	}
 
-    async raw(message)
+    async raw(message, args)
     {
-        let success = false;
-        const temp = new Discord.MessageEmbed()
-        .setColor("#b3b3ff")
-        .setDescription("*grabbing data. . .*");
-        // send await embed waiting for bot to grab api
-        await send(message, { embeds: [temp] });
-        
-        setTimeout(() => {
-            const errorEmbed = new Discord.MessageEmbed()
-                .setColor("#ff1a1a") // red
-                .setDescription("*sorry, cant grab status*");
-            // send error if takes too long to respons
-            if(success) return;
-            return get(message).edit({ embeds: [errorEmbed] });
-        }, 10000/*10 secs*/);
-
-        axios.get("https://mcapi.us/server/status?ip=vps-b39d9702.vps.ovh.ca&port=25568")
-        .then(async response => 
-        {
-            const statusEmbed = new Discord.MessageEmbed()
-            .setAuthor("139.99.91.188:25568", "https://raw.githubusercontent.com/ASEAN-Build-The-Earth/AseanBTE-Website/main/Assets/Images/icons/aseanbte_logo.gif"/*, [website link] */)
-            .setColor("#949494")
-            .addFields(
-                { 
-                    name: "raw content:",
-                    value: 
-                      `\`\`\`json\n`
-                    + `${JSON.stringify(response.data, 0, 4)}`
-                    + `\n\`\`\`` 
-                },
-            )
-            .setFooter((new Date()).toUTCString());
-            return get(message).edit({ embeds: [statusEmbed] }).then(() => { success = true; });
-        }).catch(error => {
-            console.log("error: ", error);
+        const pendingEmbed = new SendEmbed(message)
+        await pendingEmbed.sendPendingEmbed("_grabbing status. . ._", "_Sorry, failed to get server status_", { timeout: 10000 });
+        const server = await MakeEmbed.ServerFilter(args);
+        ServerStatus.getStatus.then(async (response) => {
+            const statusEmbed = MakeEmbed.getJSON(server, response);
+            pendingEmbed.resolve(statusEmbed);
+        })
+        .catch((error) => {
+            const errorEmbed = new MessageEmbed().setColor("#ff1a1a").setDescription("_Sorry, unable to get data_");
+            pendingEmbed.reject({embed: errorEmbed, error: { data: error, message:"failed to fetch server status api" }})
         });
-    }//end of raw command
-
-    async online(message)
-    {
-        let success = false;
-        const temp = new Discord.MessageEmbed()
-        .setColor("#b3b3ff")
-        .setDescription("*grabbing status. . .*");
-        // send await embed waiting for bot to grab api
-        await send(message, { embeds: [temp] });
-
-        setTimeout(() => {
-            const errorEmbed = new Discord.MessageEmbed()
-                .setColor("#ff1a1a") // red
-                .setDescription("*sorry, cant grab status*");
-            // send error if takes too long to respons
-            if(success) return;
-            return get(message).edit({ embeds: [errorEmbed] });
-        }, 10000/*10 secs*/);
-        
-
-        
-        axios.get("https://mcapi.us/server/status?ip=vps-b39d9702.vps.ovh.ca&port=25568")
-        .then(async response => 
-        {   
-            let online = response.data.online ? true : false;
-            const statusEmbed = new Discord.MessageEmbed()
-            .setAuthor("139.99.91.188:25568", "https://raw.githubusercontent.com/ASEAN-Build-The-Earth/AseanBTE-Website/main/Assets/Images/icons/aseanbte_logo.gif"/*, [website link] */)
-            .setColor(online ? "#42f560" : "#949494")
-            .setTitle(`Server is ${online ? "online" : "offline"}`)
-            .setFooter((new Date()).toUTCString());
-
-            // edit the embed with grabbed joke
-            return get(message).edit({ embeds: [statusEmbed] }).then(() => { success = true; });
-        });
-    }//end of online command
+    }
 
     async ip(message)
     {
-        return send(message, "139.99.91.188:25568");
-    }//end of ip command
+        const statusEmbed = new MessageEmbed()
+        .setAuthor({name: "Server IP",
+            url: "https://builders-doc.netlify.app",
+            iconURL: "https://builders-doc.netlify.app/media/icons/aseanbte_logo.gif",
+        })
+        .setColor("#42f560")
+        .addFields(
+            { name: "Java Edition", value: "> **IP**: \n> \`\`\`shell\n> 139.99.91.188:25569\n> \`\`\`" },
+            { name: "Bedrock Edition", value: "> **IP**: \n> \`\`\`shell\n> 139.99.91.188\n> \`\`\`\n> **PORT**: \n> \`\`\`\n> 19132\n> \`\`\`" }
+        )
+        return send(message, {embeds: [statusEmbed]});
+    }
 }
 
-module.exports.NewCommand = NewCommand;
+module.exports.ServerStatusCommand = ServerStatusCommand;
