@@ -1,11 +1,9 @@
 const { Command } = require("@sapphire/framework");
-const { send, get } = require("@sapphire/plugin-editable-commands");
 const { MessageEmbed, MessageAttachment }= require('discord.js');
+const { SendEmbed } = require("#util/embed.js");
 
-class NewCommand extends Command 
-{
-	constructor(context, options) 
-    {
+class TriggerCommand extends Command {
+	constructor(context, options) {
 		super(context, {
 			...options,
       		name: "triggered",
@@ -19,71 +17,49 @@ class NewCommand extends Command
 	async messageRun(message) 
 	{
         const { logger } = this.container;
-        let success = false;
-        const temp = new MessageEmbed()
-            .setColor("#ff1a1a")
-            .setDescription("*triggerizing . . .*");
-        // send await embed waiting for bot to grab api
-        await send(message, { embeds: [temp] });
-        
-
-
-        setTimeout(() => {
-            const errorEmbed = new MessageEmbed()
-                .setColor("#ff1a1a") // red
-                .setDescription("*sorry, I cant be triggered*");
-
-            if(success) return;
-            // send error if takes too long to response
-            return get(message).edit({ embeds: [errorEmbed] });
-        }, 10000/*10 secs*/);
-            
-
+        const pendingEmbed = new SendEmbed(message)
+        await pendingEmbed.sendPendingEmbed("_triggerizing . . ._", "_Sorry, failed to trigger_", { pendingEmbedColor: "#ff1a1a" })
 
 		// check if message did mention some user, will return unfefined if not mention anyone
-        let MentionMember = message.mentions.members.first(); 
+        const MentionMember = message.mentions.members.first(); 
         // create avatar url to user depend on has user mentioned ? yes : no
-        let MentionMemberAvatar = MentionMember? MentionMember.user.avatarURL({ format: 'png', size: 128}) : null;
+        const MentionMemberAvatar = MentionMember? MentionMember.user.avatarURL({ format: 'png', size: 128}) : null;
         // Check if Mention user is exist or not, if exist, enter the block.
         if(MentionMember !== undefined && MentionMemberAvatar !== null)
         {
     // ==== Create message for Mentioned user in message =====
-            let link = `https://some-random-api.ml/canvas/triggered/?avatar=${MentionMemberAvatar}`;
+            const link = `https://some-random-api.ml/canvas/triggered/?avatar=${MentionMemberAvatar}`;
 
-            let attachment = new MessageAttachment(link, 'triggered.gif');
+            const attachment = new MessageAttachment(link, 'triggered.gif');
 
             const triggerEmbed = new MessageEmbed()
                 .setTitle('E')
                 .setImage('attachment://triggered.gif')
                 .setColor("#ff1a1a");
 
-            logger.debug(`Generating triggered meme for mentioned user: ${MentionMemberAvatar}\n`
+            logger.info(`[I] - Generating triggered meme for mentioned user: ${MentionMemberAvatar}\n`
             + `Generated Gif: https://some-random-api.ml/canvas/triggered?avatar=${MentionMemberAvatar}`);
-
-            return get(message).edit({ embeds: [triggerEmbed], files: [attachment]  }).then(() => { success = true; });
+            return pendingEmbed.resolve({ embeds: [triggerEmbed], files: [attachment]  });
         // * * * IF REACHED -> END OF FILE 
         }
 
     // ==== Create message for Author in message =====
-        let authorAvatar = message.author.avatarURL({ format: 'png', size: 128});
-        let link = `https://some-random-api.ml/canvas/triggered/?avatar=${authorAvatar}`;
+        const authorAvatar = message.author.avatarURL({ format: 'png', size: 128});
+        const link = `https://some-random-api.ml/canvas/triggered/?avatar=${authorAvatar}`;
 
         //create a message attachment with the name of the file with discord.js built in attachment class.
-        let attachment = new MessageAttachment(link, 'triggered.gif');
+        const attachment = new MessageAttachment(link, 'triggered.gif');
 
         const triggerEmbed = new MessageEmbed()
             .setTitle('E')
             .setImage('attachment://triggered.gif')
             .setColor("#ff1a1a");
 
-        logger.debug(`Generating triggered meme for author: ${authorAvatar}\n`
-        + `Generated Gif: https://some-random-api.ml/canvas/triggered?avatar=${authorAvatar}`);
+        logger.info(`[I] - Generating triggered meme for author: ${authorAvatar}\n`
+        + `[I] - Generated Gif: https://some-random-api.ml/canvas/triggered?avatar=${authorAvatar}`);
 
-        return get(message).edit({ embeds: [triggerEmbed], files: [attachment]  }).then(() => { success = true; });
-	} // end of commands
+        return pendingEmbed.resolve({ embeds: [triggerEmbed], files: [attachment] });
+	}
 }
 
-
-
-
-module.exports.NewCommand = NewCommand;
+module.exports.TriggerCommand = TriggerCommand;

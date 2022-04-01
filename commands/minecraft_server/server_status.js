@@ -1,8 +1,8 @@
+const { ServerStatus, MakeEmbed } = require("#util/server_status/internal.js");
 const { SubCommandPluginCommand } = require('@sapphire/plugin-subcommands');
-const { MessageEmbed } = require('discord.js');
 const { send } = require("@sapphire/plugin-editable-commands");
 const { SendEmbed } = require("#util/embed.js");
-const { ServerStatus, MakeEmbed } = require("#util/server_status/internal.js");
+const { MessageEmbed } = require('discord.js');
 
 class ServerStatusCommand extends SubCommandPluginCommand {
 	constructor(context, options) {
@@ -31,9 +31,7 @@ class ServerStatusCommand extends SubCommandPluginCommand {
             ],
             cooldownDelay: 0
 		});
-	}
-
-    
+	}  
 
 	async status(message, args) 
     {
@@ -42,7 +40,7 @@ class ServerStatusCommand extends SubCommandPluginCommand {
         const server = await MakeEmbed.ServerFilter(args);
         ServerStatus.getStatus.then(async (response) => {
             const statusEmbed = MakeEmbed.get(server, response);
-            pendingEmbed.resolve(statusEmbed);
+            pendingEmbed.resolve({ embeds: [statusEmbed] });
         })
         .catch((error) => {
             const errorEmbed = new MessageEmbed().setColor("#ff1a1a").setDescription("_Sorry, unable to get data_");
@@ -57,7 +55,7 @@ class ServerStatusCommand extends SubCommandPluginCommand {
         const server = await MakeEmbed.ServerFilter(args);
         ServerStatus.getStatus.then(async (response) => {
             const statusEmbed = MakeEmbed.getJSON(server, response);
-            pendingEmbed.resolve(statusEmbed);
+            pendingEmbed.resolve({ embeds: [statusEmbed] });
         })
         .catch((error) => {
             const errorEmbed = new MessageEmbed().setColor("#ff1a1a").setDescription("_Sorry, unable to get data_");

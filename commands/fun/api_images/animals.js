@@ -1,11 +1,11 @@
-/**
- * All data from: https://some-random-api.ml
- */
 const { Command } = require("@sapphire/framework");
-const reader = require("#util/api_reader.js")
-
-const api = 
-{
+const { MessageEmbed } = require('discord.js');
+const { fetch, FetchResultTypes } = require('@sapphire/fetch');
+const { SendEmbed } = require("#util/embed.js");
+const api = {	
+	/**
+	 * All data from: https://some-random-api.ml
+	 */
 	dog: "https://some-random-api.ml/img/dog",
 	bird: "https://some-random-api.ml/img/bird",
 	cat: "https://some-random-api.ml/img/cat",
@@ -15,9 +15,28 @@ const api =
 	raccoon: "https://some-random-api.ml/img/raccoon",
 	kangaroo: "https://some-random-api.ml/img/kangaroo",
 	koala: "https://some-random-api.ml/img/koala",
-	
 }
 
+async function InitNewAnimalCommand(message, name, api, color) {
+    const pendingEmbed = new SendEmbed(message)
+    await pendingEmbed.sendPendingEmbed(`_thinking of ${name}_`, `_sorry, I cant think of any ${name}_`)
+
+    fetch(api, FetchResultTypes.JSON)
+    .then(async (response) => {
+        const animalEmbed = new MessageEmbed()
+            .setColor(color)
+            .setAuthor({name: `${message.author.username}`, iconURL: `${message.author.displayAvatarURL({ dynamic: true })}`})
+            .setTitle(`Here have a ${name} image`)
+            .setImage(response.link)
+        pendingEmbed.resolve({ embeds: [animalEmbed] });
+    })
+    .catch((error) => {
+        const errorEmbed = new MessageEmbed().setColor("#ff1a1a").setDescription(`_sorry, I cant think of any ${name}_`);
+        pendingEmbed.reject({embed: errorEmbed, error: { data: error, message:"failed to fetch animal api" }})
+    });
+}
+
+/* register commands, I got no better idea other that this */
 class DogCommand extends Command { constructor(context, options) { super(context, 
     { ...options,
       	name: "dog", aliases: ["doggo", "doggy", "doge", "dogs"],
@@ -25,7 +44,7 @@ class DogCommand extends Command { constructor(context, options) { super(context
 	}); }
 	async messageRun(message) {
         // 1:<message>, 2:<display name>, 2:<api of this command>, 2:<embed color>
-        reader.InitNewAnimalCommand(message, this.name, api.dog, "#d27979");
+        InitNewAnimalCommand(message, this.name, api.dog, "#d27979");
 	}
 }
 
@@ -35,7 +54,7 @@ class BirdCommand extends Command { constructor(context, options) { super(contex
 		description: "Uses an API to grab bird image",
 	}); }
 	async messageRun(message) {
-        reader.InitNewAnimalCommand(message, this.name, api.bird, "#ace600");
+        InitNewAnimalCommand(message, this.name, api.bird, "#ace600");
 	}
 }
 
@@ -45,7 +64,7 @@ class CatCommand extends Command { constructor(context, options) { super(context
 		description: "Uses an API to grab cat image",
 	}); }
 	async messageRun(message) {
-        reader.InitNewAnimalCommand(message, this.name, api.cat, "#80ccff");
+        InitNewAnimalCommand(message, this.name, api.cat, "#80ccff");
 	}
 }
 
@@ -55,7 +74,7 @@ class PandaCommand extends Command { constructor(context, options) { super(conte
 		description: "Uses an API to grab panda image",
 	}); }
 	async messageRun(message) {
-        reader.InitNewAnimalCommand(message, this.name, api.panda, "#e6f5ff");
+        InitNewAnimalCommand(message, this.name, api.panda, "#e6f5ff");
 	}
 }
 
@@ -65,7 +84,7 @@ class RedPandaCommand extends Command { constructor(context, options) { super(co
 		description: "Uses an API to grab red panda image",
 	}); }
 	async messageRun(message) {
-        reader.InitNewAnimalCommand(message, "red panda", api.redPanda, "#990000");
+        InitNewAnimalCommand(message, "red panda", api.redPanda, "#990000");
 	}
 }
 
@@ -76,7 +95,7 @@ class FoxCommand extends Command { constructor(context, options) { super(context
 		category: "animals_api"
 	}); }
 	async messageRun(message) {
-        reader.InitNewAnimalCommand(message, this.name, api.fox, "#990000");
+        InitNewAnimalCommand(message, this.name, api.fox, "#990000");
 	}
 }
 
@@ -86,7 +105,7 @@ class RaccoonCommand extends Command { constructor(context, options) { super(con
 		description: "Uses an API to grab raccoon image"
 	}); }
 	async messageRun(message) {
-        reader.InitNewAnimalCommand(message, this.name, api.raccoon, "#990000");
+        InitNewAnimalCommand(message, this.name, api.raccoon, "#990000");
 	}
 }
 
@@ -96,7 +115,7 @@ class KangarooCommand extends Command { constructor(context, options) { super(co
 		description: "Uses an API to grab kangaroo image",
 	}); }
 	async messageRun(message) {
-        reader.InitNewAnimalCommand(message, this.name, api.kangaroo, "#990000");
+        InitNewAnimalCommand(message, this.name, api.kangaroo, "#990000");
 	}
 }
 
@@ -106,10 +125,9 @@ class KoalaCommand extends Command { constructor(context, options) { super(conte
 		description: "Uses an API to grab koala image",
 	}); }
 	async messageRun(message) {
-        reader.InitNewAnimalCommand(message, this.name, api.koala, "#990000");
+        InitNewAnimalCommand(message, this.name, api.koala, "#990000");
 	}
 }
-
 
 // push all data to our module
 module.exports.DogCommand      = DogCommand;

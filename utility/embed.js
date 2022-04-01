@@ -30,8 +30,8 @@ class SendEmbed {
             this.resolve = resolve;
         }) /* Embed promise resolver */
         .then(function(result) {// resolve
-            try { return get(message).edit({ embeds: [result] }); } 
-            catch { return send(message, { embeds: [result] }); }
+            try { return get(message).edit(result); } 
+            catch { return send(message, result); }
         })
         .catch(function({embed, error}) {// reject
             container.logger.warn(`[E] - ${error.message} | to: ${message.author.username}[${message.author.id}]`
@@ -50,10 +50,10 @@ class SendEmbed {
      * @param {String} options.timedOutEmbedColor embed color of timed out message,  
      * @param {Number} options.timeout timeout length in milliseconds (default to 5000)
      */
-    async sendPendingEmbed(pendingMessage, timedOutMessage, options) 
+    async sendPendingEmbed(pendingMessage, timedOutMessage, options = {}) 
     {
         const pendingEmbedColor = !!options.pendingEmbedColor? options.pendingEmbedColor : "#b3b3ff";
-        const timedOutEmbedColor = !!options.timedOutEmbedColor? options.timedOutEmbedColor : "#b3b3ff";
+        const timedOutEmbedColor = !!options.timedOutEmbedColor? options.timedOutEmbedColor : "#ff1a1a";
         const timeout = !!options.timeout? options.timeout : 5000;
 
         const pendingEmbed = new MessageEmbed().setColor(pendingEmbedColor).setDescription(pendingMessage);
