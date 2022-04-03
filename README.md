@@ -208,8 +208,7 @@ See our Youtube [here](https://www.youtube.com/channel/UCXgXXpOh3xyuNj7PRz_tDwQ)
 - We develop discord bot named Merlion here. This bot helps organize the discord server and such
 ### Why should I help
 - We need help ;w;
-- 
----
+
 ### 🧑‍🤝‍🧑 Contributors 
 <br>
 <a href="https://github.com/ASEAN-Build-The-Earth/Merlion/graphs/contributors">
