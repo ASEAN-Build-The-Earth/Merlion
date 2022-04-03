@@ -35,7 +35,7 @@ class SendEmbed {
         })
         .catch(function({embed, error}) {// reject
             container.logger.warn(`[E] - ${error.message} | to: ${message.author.username}[${message.author.id}]`
-                + `${error.data !== undefined? `\ndata: ${error.data}` : ""}`);
+                + `${error.data !== undefined? `\n└─ ${error.data}` : ""}`);
             try { return get(message).edit({ embeds: [embed] }); } 
             catch { return send(message, { embeds: [embed] }); }
         })

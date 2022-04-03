@@ -1,6 +1,6 @@
 {
 	"name": "merlion",
-	"version": "v1.2.1",
+	"version": "v1.1.1",
 	"author": "ASEAN BuildTheEarth",
 	"description": "Asean BTE Merlion Discord bot",
 	"main": "./src/index.js",
@@ -25,17 +25,13 @@
 	"dependencies": {
 		"@sapphire/fetch": "^2.3.0",
 		"@sapphire/framework": "^2.4.1",
-		"@sapphire/plugin-api": "^3.2.0",
+		"@sapphire/plugin-api": "^3.2.1",
 		"@sapphire/plugin-editable-commands": "^1.2.0",
-		"@sapphire/plugin-i18next": "^2.3.0",
 		"@sapphire/plugin-logger": "^2.2.0",
 		"@sapphire/plugin-subcommands": "^2.2.0",
-		"axios": "^0.21.4",
 		"discord.js": "^13.6.0",
 		"dotenv": "^10.0.0",
-		"imgur": "^2.1.0",
 		"mocha": "^9.1.2",
-		"mongoose": "^6.1.5",
 		"uwuifier": "^4.0.4"
 	}
 }

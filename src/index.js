@@ -10,9 +10,8 @@
 \* * * * * * * * * * * * * * * * * * * * * * * * */
 require("./lib/setup.js");
 const { LogLevel, SapphireClient } = require("@sapphire/framework");
-const { prefix, dbLoginURL } = require("./data/config.json");
+const { prefix } = require("./data/config.json");
 const { join } = require("path");
-const { InitDatabase } = require("./lib/setup.js");
 require("dotenv").config({ debug: process.env.DEBUG });
 
 const client = new SapphireClient(
@@ -47,12 +46,6 @@ const client = new SapphireClient(
 		baseUserDirectory: __dirname
 	}
 );
-
-InitDatabase(dbLoginURL
-	.replace("<username>", process.env.DB_USER)
-	.replace("<password>", process.env.DB_PASS)
-	.replace("<databaseName>", process.env.DB_NAME));
-
 
 //#region main() login function.
 const main = async () => {

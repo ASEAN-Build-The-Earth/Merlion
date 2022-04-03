@@ -1,8 +1,8 @@
 const { Command } = require("@sapphire/framework");
-const { send, get } = require("@sapphire/plugin-editable-commands");
 const { MessageEmbed }= require('discord.js');
+const { SendEmbed } = require("#util/embed.js");
 
-class NewCommand extends Command 
+class AvatarCommand extends Command 
 {
 	constructor(context, options) 
     {
@@ -10,61 +10,39 @@ class NewCommand extends Command
 			...options,
       		name: "avatar",
 			aliases: ["profile", "pfp"],
-			description: "a description",
+			description: "get your own avatar picture or your friend's",
             detailedDescription: "this is so detailed",
-            cooldownDelay: 10000 /* 10 secs cooldown */
+            cooldownDelay: 5000
 		});
 	}
 
-	async messageRun(message) 
-	{
-        const { logger } = this.container;
-        let success = false;
-        const temp = new MessageEmbed()
-            .setColor("#949494")
-            .setDescription("*memorizing your avatar . . .*");
-        // send await embed waiting for bot to grab api
-        await send(message, { embeds: [temp] });
+	async messageRun(message) {
+        const pendingEmbed = new SendEmbed(message)
+        await pendingEmbed.sendPendingEmbed("_inspecting . . ._", "_Sorry, failed to get an avatar picture_", { timeout: 10000 });
         
-
-
-        setTimeout(() => {
-            const errorEmbed = new MessageEmbed()
-                .setColor("#ff1a1a") // red
-                .setDescription("*sorry, I cant remember your avatar*");
-
-            if(success) return;
-            // send error if takes too long to response
-            return get(message).edit({ embeds: [errorEmbed] });
-        }, 10000/*10 secs*/);
-            
-		// check if message did mention some user, will return unfefined if not mention anyone
-        let MentionMember = message.mentions.members.first(); 
-        let MentionMemberAvatar = MentionMember? MentionMember.user.avatarURL({ format: 'png', size: 128}) : null;
-        if(MentionMember !== undefined && MentionMemberAvatar !== null)
+        /* check for mentioned user and get that user's avatar */
+        const mentionMember = message.mentions.members.first(); 
+        const mentionMemberAvatar = mentionMember? MentionMember.user.avatarURL({ format: 'png', size: 128}) : null;
+        if(mentionMember !== undefined && mentionMemberAvatar !== null)
         {   
             const triggerEmbed = new MessageEmbed()
-                .setTitle(`${MentionMember.user.username}#${MentionMember.user.discriminator}'s avatar`).setURL(MentionMemberAvatar)
-                .setImage(MentionMemberAvatar)
+                .setTitle(`${mentionMember.user.username}#${mentionMember.user.discriminator}'s avatar`).setURL(mentionMemberAvatar)
+                .setImage(mentionMemberAvatar)
                 .setColor("#42f560");
-
-                logger.debug(MentionMember.user.username);
-            return get(message).edit({ embeds: [triggerEmbed] }).then(() => { success = true; });
+            return pendingEmbed.resolve({ embeds: [triggerEmbed] });
         }
 
-    // ==== Create message for Author in message =====
-        let authorAvatar = message.author.avatarURL({ format: 'png', size: 128});
-
+        /* get author's avatar if does not found mentioned user in the message */
+        const authorAvatar = message.author.avatarURL({ format: 'png', size: 128});
         const triggerEmbed = new MessageEmbed()
             .setTitle(`${message.author.username}#${message.author.discriminator}'s avatar`).setURL(authorAvatar)
             .setImage(authorAvatar)
             .setColor("#42f560");
-
-        return get(message).edit({ embeds: [triggerEmbed] }).then(() => { success = true; });
-	} // end of commands
+        return pendingEmbed.resolve({ embeds: [triggerEmbed] });
+	}
 }
 
 
 
 
-module.exports.NewCommand = NewCommand;
+module.exports.AvatarCommand = AvatarCommand;

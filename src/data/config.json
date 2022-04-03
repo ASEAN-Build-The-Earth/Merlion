@@ -17,6 +17,5 @@
             "name" : "dirtytin#5972",
             "id" : "481786697860775937"
         }
-    ],
-    "dbLoginURL":"mongodb+srv://<username>:<password>@tin.0u1nr.mongodb.net/<databaseName>?retryWrites=true&w=majority"
+    ]
 }

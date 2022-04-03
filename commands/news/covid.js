@@ -3,7 +3,7 @@ const { Command } = require("@sapphire/framework");
 const { SendEmbed } = require("#util/embed.js");
 const { MessageEmbed } = require('discord.js');
 
-class NewCommand extends Command {
+class CovidCommand extends Command {
 	constructor(context, options) {
 		super(context, {
 			...options,
@@ -57,4 +57,4 @@ class NewCommand extends Command {
 	}
 }
 
-module.exports.NewCommand = NewCommand;
+module.exports.CovidCommand = CovidCommand;

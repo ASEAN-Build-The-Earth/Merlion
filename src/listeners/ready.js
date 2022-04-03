@@ -92,7 +92,7 @@ class UserEvent extends Listener
         console.log(``
         + `Logged in as ${client.user.username}#${client.user.discriminator}\n`
         + `└─ prefix: ${prefix.norminal}\n`
-        + `└─ regex prefix: ${prefix.regex}\n`
+        + `└─ regex prefix: ${prefix.regex.slice(0, 24).concat("...")}\n`
         + `└─ owners: ${ownersString}\n`
         + `\t└─ Registered commands at:\n\t\t${list.toString().replace(",", "\n\t\t")}`);
         //#endregion
