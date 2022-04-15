@@ -1,6 +1,6 @@
 {
 	"name": "merlion",
-	"version": "v1.1.1",
+	"version": "v1.1.2",
 	"author": "ASEAN BuildTheEarth",
 	"description": "Asean BTE Merlion Discord bot",
 	"main": "./src/index.js",
