@@ -67,8 +67,8 @@ class ServerStatusCommand extends SubCommandPluginCommand {
     {
         const statusEmbed = new MessageEmbed()
         .setAuthor({name: "Server IP",
-            url: "https://builders-doc.netlify.app",
-            iconURL: "https://builders-doc.netlify.app/media/icons/aseanbte_logo.gif",
+            url: "https://asean.buildtheearth.asia",
+            iconURL: "https://asean.buildtheearth.asia/media/icons/aseanbte_logo.gif",
         })
         .setColor("#42f560")
         .addFields(

@@ -9,7 +9,7 @@ class CovidCommand extends Command {
 			...options,
       		name: "covid",
             aliases: ["cases", "case", "corona"],
-			description: "Uses an API to covid data",
+			description: "get a covid statis in specific country",
             cooldownDelay: 10000
 		});
 	}

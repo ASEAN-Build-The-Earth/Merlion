@@ -8,7 +8,7 @@ class UwuCommand extends Command {
 			...options,
       		name: "uwu",
 			aliases: ["owo", "qwq"],
-			description: "ping pong",
+			description: "uwuify your sentence",
 		});
 	}
 

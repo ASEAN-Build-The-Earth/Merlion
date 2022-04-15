@@ -8,7 +8,7 @@ class JokeCommand extends Command {
 		super(context, {
 			...options,
       		name: "joke",
-			description: "Uses an API to grab jokes"
+			description: "get some joke"
 		});
 	}
 

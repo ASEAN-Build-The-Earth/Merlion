@@ -35,7 +35,7 @@ class UserEvent extends Listener
 
 					const temp = new Discord.MessageEmbed()
 					.setColor("#ff1a1a")
-					.setDescription(`ey ey, no spam, wait more ${Math.ceil(error.context.remaining / 1000)} second${error.context.remaining > 1000 ? 's' : ''}`);
+					.setDescription(`hey, please wait more ${Math.ceil(error.context.remaining / 1000)} second${error.context.remaining > 1000 ? 's' : ''} before using this command again`);
 
 					if(errorMessageSent < defaultMessageLimit)
 					{	
@@ -44,7 +44,7 @@ class UserEvent extends Listener
 							setTimeout(() => {
 								get(message).delete();
 								errorMessageSent -= 1;
-							}, error.context.remaining >= defaultMessageLimit ? error.context.remaining : defaultMessageLimit);
+							}, error.context.remaining >= defaultRateLimit ? error.context.remaining : defaultRateLimit);
 						});
 					}
 					break;

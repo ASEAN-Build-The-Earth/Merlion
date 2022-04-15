@@ -6,7 +6,8 @@
 	"main": "./src/index.js",
 	"imports": {
 		"#util/*": "./utility/*",
-		"#src/*": "./src/*"
+		"#src/*": "./src/*",
+		"#assets/*": "./assets/*"
 	},
 	"scripts": {
 		"start": "node .",

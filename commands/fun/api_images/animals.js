@@ -40,7 +40,7 @@ async function InitNewAnimalCommand(message, name, api, color) {
 class DogCommand extends Command { constructor(context, options) { super(context, 
     { ...options,
       	name: "dog", aliases: ["doggo", "doggy", "doge", "dogs"],
-		description: "get youeself a dog",
+		description: "get yourself a dog",
 	}); }
 	async messageRun(message) {
         // 1:<message>, 2:<display name>, 2:<api of this command>, 2:<embed color>
@@ -51,7 +51,7 @@ class DogCommand extends Command { constructor(context, options) { super(context
 class BirdCommand extends Command { constructor(context, options) { super(context, 
     { ...options,
       	name: "bird", aliases: ["birb", "birbby", "birds"],
-		description: "get youeself a bird",
+		description: "get yourself a bird",
 	}); }
 	async messageRun(message) {
         InitNewAnimalCommand(message, this.name, api.bird, "#ace600");
@@ -61,7 +61,7 @@ class BirdCommand extends Command { constructor(context, options) { super(contex
 class CatCommand extends Command { constructor(context, options) { super(context, 
     { ...options,
       	name: "cat",
-		description: "get youeself a cat",
+		description: "get yourself a cat",
 	}); }
 	async messageRun(message) {
         InitNewAnimalCommand(message, this.name, api.cat, "#80ccff");
@@ -71,7 +71,7 @@ class CatCommand extends Command { constructor(context, options) { super(context
 class PandaCommand extends Command { constructor(context, options) { super(context, 
     { ...options,
       	name: "panda",
-		description: "get youeself a panda",
+		description: "get yourself a panda",
 	}); }
 	async messageRun(message) {
         InitNewAnimalCommand(message, this.name, api.panda, "#e6f5ff");
@@ -81,7 +81,7 @@ class PandaCommand extends Command { constructor(context, options) { super(conte
 class RedPandaCommand extends Command { constructor(context, options) { super(context, 
     { ...options,
       	name: "redpanda",
-		description: "get youeself a red panda",
+		description: "get yourself a red panda",
 	}); }
 	async messageRun(message) {
         InitNewAnimalCommand(message, "red panda", api.redPanda, "#990000");
@@ -91,7 +91,7 @@ class RedPandaCommand extends Command { constructor(context, options) { super(co
 class FoxCommand extends Command { constructor(context, options) { super(context, 
     { ...options,
       	name: "fox",
-		description: "get youeself a fox",
+		description: "get yourself a fox",
 		category: "animals_api"
 	}); }
 	async messageRun(message) {
@@ -102,7 +102,7 @@ class FoxCommand extends Command { constructor(context, options) { super(context
 class RaccoonCommand extends Command { constructor(context, options) { super(context, 
     { ...options,
       	name: "raccoon",
-		description: "get youeself a raccoon"
+		description: "get yourself a raccoon"
 	}); }
 	async messageRun(message) {
         InitNewAnimalCommand(message, this.name, api.raccoon, "#990000");
@@ -112,7 +112,7 @@ class RaccoonCommand extends Command { constructor(context, options) { super(con
 class KangarooCommand extends Command { constructor(context, options) { super(context, 
     { ...options,
       	name: "kangaroo",
-		description: "get youeself a kangaroo",
+		description: "get yourself a kangaroo",
 	}); }
 	async messageRun(message) {
         InitNewAnimalCommand(message, this.name, api.kangaroo, "#990000");
@@ -122,7 +122,7 @@ class KangarooCommand extends Command { constructor(context, options) { super(co
 class KoalaCommand extends Command { constructor(context, options) { super(context, 
     { ...options,
       	name: "koala",
-		description: "get youeself a koala bear",
+		description: "get yourself a koala bear",
 	}); }
 	async messageRun(message) {
         InitNewAnimalCommand(message, this.name, api.koala, "#990000");
