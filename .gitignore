@@ -1,4 +1,6 @@
 ### NODE_MODULES ###
 node_modules
 ### Some Screet file ###
-auth.json*
+.env
+### ignore all file with local.<filename>
+local.*
