@@ -24,7 +24,7 @@
 	},
 	"homepage": "https://github.com/ASEAN-Build-The-Earth/Merlion#readme",
 	"dependencies": {
-		"@sapphire/fetch": "^2.3.0",
+		"@sapphire/fetch": "^2.3.1",
 		"@sapphire/framework": "^2.4.1",
 		"@sapphire/plugin-api": "^3.2.1",
 		"@sapphire/plugin-editable-commands": "^1.2.0",
